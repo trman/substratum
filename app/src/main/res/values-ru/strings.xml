@@ -23,7 +23,6 @@
     <string name="resource_commit_dialog_title">Отсутствуют ресурсы в %s</string>
     <string name="refused_to_install_notification_button">Удалить тему</string>
     <string name="refused_to_install_title_notification">Автор темы запретил установку темы на Samsung.</string>
-    <string name="failed_to_install_title_notification">Не удалось установить OMS тему</string>
     <string name="actionbar_theme_count_loading">загрузка&#8230;</string>
     <string name="actionbar_search">Найти</string>
     <string name="actionbar_changelog">История изменений</string>
@@ -34,8 +33,6 @@
     <string name="systemui_statusbar">Значки статус-бара</string>
     <string name="warning_title">ВНИМАНИЕ!</string>
     <string name="new_stock_commits_title">Требуется перезагрузка!</string>
-    <string name="legacy_dialog_soft_reboot_title">Требуется перезагрузка!</string>
-    <string name="abort_overlay_toast_success">Все слои удалены!</string>
     <string name="rescue_toast">Восстановление системы&#8230;</string>
     <string name="reboot_awaiting_manager_title">ОШИБКА ПРИ ЧТЕНИИ НАСЛОЕНИЯ</string>
     <string name="legacy_preference_priority_title">Изменение приоритета наслоения</string>
@@ -160,7 +157,6 @@
     <string name="delete_dialog_title">Удалить профиль</string>
     <string name="delete_dialog_text" formatted="false">Вы уверены, что хотите удалить \"%s\"?</string>
     <string name="restore">Восстановление</string>
-    <string name="remove_dialog_later">Позже</string>
     <string name="restore_dialog_okay">Продолжить</string>
     <string name="backup_button">СОХРАНИТЬ ТЕКУЩЕЕ СОСТОЯНИЕ</string>
     <string name="backup_no_overlays">В текущей конфигурации наслоений нет.</string>
@@ -188,7 +184,6 @@
     <string name="toast_compiled_updated_with_errors">Выбранные слои обновлены с неполадками!</string>
     <string name="toast_disabled3">Соберите наслоение перед применением!</string>
     <string name="toast_disabled5">Выберите допустимое наслоение до выполнения этого действия.</string>
-    <string name="toast_disabled6">Выбранные слои удалены!</string>
     <string name="no_themes_title">не найдено тем&#8230;</string>
     <string name="no_overlays_title">оверлеи не найдены&#8230;</string>
     <string name="no_themes_description">установите любую совместимую тему!</string>
@@ -252,7 +247,6 @@
     <string name="fab_menu_enable">Включить выбранное</string>
     <string name="fab_menu_enable_disable">Изменить состояния наслоений</string>
     <string name="fab_menu_swap_toggle">Отключить другие темы</string>
-    <string name="fab_menu_swap_toggle_legacy">Удалить все существующие</string>
     <string name="team_title_one">Основатели Substratum</string>
     <string name="team_text_one">Создавая пользовательскую часть, мы также совещались с дизайнерами тем, чтобы у сообщества был чудесный движок!</string>
     <string name="team_title_three">Содействовавшие развитию Substratum</string>

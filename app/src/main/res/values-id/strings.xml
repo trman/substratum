@@ -21,7 +21,6 @@
     <string name="andromeda_notification_title">Substratum dan Andromeda terhubung!</string>
     <string name="andromeda_notification_text">Latar belakang tema layanan telah digabungkan, aktif dan berjalan.</string>
     <string name="resource_commit_dialog_title">Sumber yang hilang di %s</string>
-    <string name="failed_to_install_title_notification">Gagal memasang tema OMS</string>
     <string name="actionbar_theme_count_loading">memuat&#8230;</string>
     <string name="actionbar_search">Cari</string>
     <string name="actionbar_changelog">Riwayat Perubahan Tema</string>
@@ -32,8 +31,6 @@
     <string name="systemui_statusbar">Tampilan Ikon Status Bar</string>
     <string name="warning_title">PERINGATAN!</string>
     <string name="new_stock_commits_title">Reboot diperlukan!</string>
-    <string name="legacy_dialog_soft_reboot_title">Reboot diperlukan!</string>
-    <string name="abort_overlay_toast_success">Semua lapisan telah dicopot!</string>
     <string name="rescue_toast">Menyelamatkan sistem Anda&#8230;</string>
     <string name="reboot_awaiting_manager_title">KESALAHAN MEMBACA LAPISAN</string>
     <string name="backend_not_authorized_title">Pembuatan debug substratum tidak di izinkan!</string>
@@ -160,7 +157,6 @@
     <string name="delete_dialog_title">Hapus profil</string>
     <string name="delete_dialog_text" formatted="false">Apa kamu yakin untuk menghapus \"%s\"?</string>
     <string name="restore">Memulihkan Kartu</string>
-    <string name="remove_dialog_later">Nanti</string>
     <string name="restore_dialog_okay">Lanjutkan</string>
     <string name="backup_button">BACKUP KONDISI TERKINI</string>
     <string name="backup_no_overlays">Tidak ada lapisan di dalam pengaturan terkini kamu.</string>
@@ -188,7 +184,6 @@
     <string name="toast_compiled_updated_with_errors">Lapisan terpilih diperbaharui dengan beberapa masalah!</string>
     <string name="toast_disabled3">Silahkan susun lapisan ini sebelum diterapkan!</string>
     <string name="toast_disabled5">Silahkan memilih lapisan yang valid sebelum memulai kegiatan ini.</string>
-    <string name="toast_disabled6">Lapisan yang terpilih telah dihapus!</string>
     <string name="no_themes_title">tema tidak ditemukan&#8230;</string>
     <string name="no_overlays_title">lapisan tidak ditemukan&#8230;</string>
     <string name="no_themes_description">silahkan pasang tema yang kompatibel!</string>
@@ -250,7 +245,6 @@
     <string name="fab_menu_enable">Aktifkan yang Dipilih</string>
     <string name="fab_menu_enable_disable">Perubahan tampilan Serikat</string>
     <string name="fab_menu_swap_toggle">Nonaktifkan tema lain</string>
-    <string name="fab_menu_swap_toggle_legacy">Hapus semua yang ada sekarang</string>
     <string name="team_title_one">Pemimpin dari Substratum</string>
     <string name="team_text_one">Kami tidak hanya membuat sesuatu yang berguna bagi pengguna, tetapi kami bekerja dengan pembuat tema untuk membuat mesin tema bagi komunitas!</string>
     <string name="team_title_three">Kontributor Substratum</string>

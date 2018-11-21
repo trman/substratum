@@ -9,10 +9,8 @@ package projekt.substratum.tabs;
 
 import android.content.Context;
 import projekt.substratum.common.platform.SubstratumService;
-import projekt.substratum.common.platform.ThemeInterfacerService;
 
 import static projekt.substratum.common.Systems.checkSubstratumService;
-import static projekt.substratum.common.Systems.checkThemeInterfacer;
 
 public class FontsManager {
 
@@ -29,8 +27,6 @@ public class FontsManager {
             String name) {
         if (checkSubstratumService(context)) {
             SubstratumService.setFonts(themePid, name);
-        } else if (checkThemeInterfacer(context)) {
-            ThemeInterfacerService.setFonts(themePid, name);
         }
     }
 
@@ -42,8 +38,6 @@ public class FontsManager {
     public static void clearFonts(Context context) {
         if (checkSubstratumService(context)) {
             SubstratumService.clearFonts();
-        } else if (checkThemeInterfacer(context)) {
-            ThemeInterfacerService.clearFonts();
         }
     }
 }

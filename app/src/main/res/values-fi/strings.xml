@@ -23,8 +23,6 @@
     <string name="refused_to_install_notification_button">Poista Teema</string>
     <string name="refused_to_install_title_notification">Teemantekijä hylkäsi teeman Samsungilla.</string>
     <string name="refused_to_install_text_notification">%s asennus epäonnistui.</string>
-    <string name="failed_to_install_title_notification">OMS-teeman asennus epäonnistui</string>
-    <string name="failed_to_install_text_notification">%s asennus epäonnistui.</string>
     <string name="actionbar_theme_count_loading">ladataan&#8230;</string>
     <string name="actionbar_search">Hae</string>
     <string name="actionbar_changelog">Teeman Muutosloki</string>
@@ -35,8 +33,6 @@
     <string name="systemui_statusbar">System UI tilarivin kuvakkeet</string>
     <string name="warning_title">VAROITUS!</string>
     <string name="new_stock_commits_title">Vaatii uudelleenkäynnistyksen!</string>
-    <string name="legacy_dialog_soft_reboot_title">Vaatii uudelleenkäynnistyksen!</string>
-    <string name="abort_overlay_toast_success">Kaikki overlay:t poistettu!</string>
     <string name="rescue_toast">Pelastetaan järjestelmääsi&#8230;</string>
     <string name="reboot_awaiting_manager_title">ONGELMA LUKIESSA PÄÄLLYSTÄ</string>
     <string name="manager_theme_name">Teema: %s</string>
@@ -176,7 +172,6 @@
     <string name="delete_dialog_title">Poista profiili</string>
     <string name="delete_dialog_text" formatted="false">Oletko varma että haluat poistaa \"%s\"?</string>
     <string name="restore">Palauta Kortti</string>
-    <string name="remove_dialog_later">Myöhemmin</string>
     <string name="restore_dialog_okay">Jatka</string>
     <string name="backup_button">VARMUUSKOPIO NYKYINEN TILA</string>
     <string name="backup_no_overlays">Nykyisessä asetelmassasi ei ole päällyksiä.</string>
@@ -199,7 +194,6 @@
     <string name="toast_compiled_updated">Valitut päällykset päivitetty!</string>
     <string name="toast_compiled_updated_with_errors">Valitut päällykset päivitetty muutaman virheen kanssa!</string>
     <string name="toast_disabled3">Kokoa tämä päällys ennen kuin otat sen käyttöön!</string>
-    <string name="toast_disabled6">Valitut päällykset poistettu!</string>
     <string name="no_themes_title">teemoja ei löytynyt&#8230;</string>
     <string name="no_overlays_title">päällyksiä ei löytynyt&#8230;</string>
     <string name="no_themes_description">asenna yhteensopiva teema!</string>
@@ -236,7 +230,6 @@
     <string name="fab_menu_enable">Ota käyttöön valitut</string>
     <string name="fab_menu_enable_disable">Muuta päällysten tilaa</string>
     <string name="fab_menu_swap_toggle">Poista toiset teemat käytöstä</string>
-    <string name="fab_menu_swap_toggle_legacy">Poista kaikki olemassaolevat</string>
     <string name="team_title_one">Substratumin Johtajat</string>
     <string name="team_text_one">Emme ainoastaan luoneet jotain joka toimii käyttäjille, vaan me työskentelimme yhdessä teemantekijöiden kanssa tehdäksemme siitä loistavan teemakoneen yhteisölle!</string>
     <string name="team_title_three">Substratumin Avustajat</string>

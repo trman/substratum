@@ -26,7 +26,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.FileProvider;
@@ -40,7 +39,6 @@ import projekt.substratum.common.Broadcasts;
 import projekt.substratum.common.Packages;
 import projekt.substratum.common.References;
 import projekt.substratum.common.Systems;
-import projekt.substratum.common.commands.ElevatedCommands;
 import projekt.substratum.common.commands.FileOperations;
 import projekt.substratum.common.commands.SamsungOverlayCacher;
 import projekt.substratum.common.platform.ThemeManager;
@@ -67,8 +65,6 @@ import static projekt.substratum.common.Internal.SPECIAL_SNOWFLAKE_DELAY_SS;
 import static projekt.substratum.common.Internal.THEME_NAME;
 import static projekt.substratum.common.Internal.THEME_PID;
 import static projekt.substratum.common.References.DEFAULT_NOTIFICATION_CHANNEL_ID;
-import static projekt.substratum.common.References.LEGACY_NEXUS_DIR;
-import static projekt.substratum.common.References.PIXEL_NEXUS_DIR;
 import static projekt.substratum.common.References.REFRESH_WINDOW_DELAY;
 import static projekt.substratum.common.References.SECURITY_UPDATE_WARN_AFTER;
 import static projekt.substratum.common.References.SUBSTRATUM_BUILDER;
@@ -80,7 +76,6 @@ import static projekt.substratum.common.Resources.SYSTEMUI_HEADERS;
 import static projekt.substratum.common.Resources.SYSTEMUI_NAVBARS;
 import static projekt.substratum.common.Resources.SYSTEMUI_QSTILES;
 import static projekt.substratum.common.Resources.SYSTEMUI_STATUSBARS;
-import static projekt.substratum.common.Resources.inNexusFilter;
 import static projekt.substratum.common.Systems.checkOMS;
 import static projekt.substratum.common.Systems.checkSubstratumService;
 import static projekt.substratum.common.Systems.checkThemeInterfacer;
@@ -188,88 +183,6 @@ class OverlaysManager {
                         Snackbar.LENGTH_LONG);
                 currentShownLunchBar.show();
             }
-        }
-    }
-
-    /**
-     * Consolidated function to disable overlays on legacy based devices
-     *
-     * @param overlays Overlays fragment
-     */
-    static void legacyDisable(Overlays overlays) {
-        String currentDirectory;
-        if (inNexusFilter()) {
-            currentDirectory = PIXEL_NEXUS_DIR;
-        } else {
-            currentDirectory = LEGACY_NEXUS_DIR;
-        }
-
-        if (!overlays.currentInstance.checkedOverlays.isEmpty()) {
-            if (Systems.isSamsungDevice(overlays.context)) {
-                if (Root.checkRootAccess()) {
-                    ArrayList<String> checked_overlays = new ArrayList<>();
-                    for (int i = 0; i < overlays.currentInstance.checkedOverlays.size(); i++) {
-                        checked_overlays.add(
-                                overlays.currentInstance.checkedOverlays.get(i)
-                                        .getFullOverlayParameters());
-                    }
-                    ThemeManager.uninstallOverlay(overlays.context, checked_overlays);
-                } else {
-                    for (int i = 0; i < overlays.currentInstance.checkedOverlays.size(); i++) {
-                        Uri packageURI = Uri.parse("package:" +
-                                overlays.currentInstance.checkedOverlays.get(i)
-                                        .getFullOverlayParameters());
-                        Intent uninstallIntent =
-                                new Intent(Intent.ACTION_UNINSTALL_PACKAGE, packageURI);
-                        overlays.startActivity(uninstallIntent);
-                    }
-                }
-            } else {
-                overlays.overlaysAdapter.refreshOverlayStateList(overlays.context);
-                for (int i = 0; i < overlays.currentInstance.checkedOverlays.size(); i++) {
-                    FileOperations.mountRW();
-                    FileOperations.delete(overlays.context, currentDirectory +
-                            overlays.currentInstance.checkedOverlays.get(i)
-                                    .getFullOverlayParameters() + ".apk");
-                    overlays.overlaysAdapter.notifyDataSetChanged();
-                }
-                // Untick all options in the adapter after compiling
-                overlays.toggleAll.setChecked(false);
-                overlays.overlayItemList = overlays.overlaysAdapter.getOverlayList();
-                for (int i = 0; i < overlays.overlayItemList.size(); i++) {
-                    OverlaysItem currentOverlay = overlays.overlayItemList.get(i);
-                    if (currentOverlay.isSelected()) {
-                        currentOverlay.setSelected(false);
-                    }
-                }
-                Toast.makeText(overlays.context,
-                        overlays.getString(R.string.toast_disabled6),
-                        Toast.LENGTH_SHORT).show();
-                assert overlays.context != null;
-                AlertDialog.Builder alertDialogBuilder =
-                        new AlertDialog.Builder(overlays.context);
-                alertDialogBuilder.setTitle(
-                        overlays.getString(R.string.legacy_dialog_soft_reboot_title));
-                alertDialogBuilder.setMessage(
-                        overlays.getString(R.string.legacy_dialog_soft_reboot_text));
-                alertDialogBuilder.setPositiveButton(
-                        android.R.string.ok,
-                        (dialog, id12) -> ElevatedCommands.reboot());
-                alertDialogBuilder.setNegativeButton(
-                        R.string.remove_dialog_later, (dialog, id1) -> {
-                            overlays.progressBar.setVisibility(View.GONE);
-                            dialog.dismiss();
-                        });
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
-            }
-        } else {
-            if (overlays.toggleAll.isChecked()) overlays.toggleAll.setChecked(false);
-            currentShownLunchBar = Lunchbar.make(
-                    overlays.getActivityView(),
-                    overlays.context.getString(R.string.toast_disabled5),
-                    Snackbar.LENGTH_LONG);
-            currentShownLunchBar.show();
         }
     }
 
@@ -527,31 +440,7 @@ class OverlaysManager {
                         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                         overlays.startActivityForResult(intent, 2486);
                     }
-                } else if (!Systems.checkOMS(context) &&
-                        (overlays.currentInstance.finalRunner.size() ==
-                                overlays.currentInstance.failCount)) {
-                    AlertDialog.Builder alertDialogBuilder =
-                            new AlertDialog.Builder(context);
-                    alertDialogBuilder
-                            .setTitle(context.getString(R.string.legacy_dialog_soft_reboot_title));
-                    alertDialogBuilder
-                            .setMessage(context.getString(R.string.legacy_dialog_soft_reboot_text));
-                    alertDialogBuilder
-                            .setPositiveButton(android.R.string.ok,
-                                    (dialog, id12) -> ElevatedCommands.reboot());
-                    alertDialogBuilder
-                            .setNegativeButton(R.string.remove_dialog_later,
-                                    (dialog, id1) -> {
-                                        overlays.progressBar.setVisibility(View.GONE);
-                                        dialog.dismiss();
-                                    });
-                    alertDialogBuilder.setCancelable(false);
-                    AlertDialog alertDialog = alertDialogBuilder.create();
-                    alertDialog.show();
                 }
-                overlays.overlaysAdapter.refreshOverlayStateList(overlays.context);
-                overlays.overlaysAdapter.notifyDataSetChanged();
-                if (overlays.toggleAll.isChecked()) overlays.toggleAll.setChecked(false);
             }
         }
 
@@ -564,19 +453,6 @@ class OverlaysManager {
                 Context context = overlays.getActivity();
                 String parsedVariant = sUrl[0].replaceAll("\\s+", "");
                 String unparsedVariant = sUrl[0];
-                if (overlays.mixAndMatchMode && !Systems.checkOMS(context)) {
-                    String currentDirectory;
-                    if (inNexusFilter()) {
-                        currentDirectory = References.PIXEL_NEXUS_DIR;
-                    } else {
-                        currentDirectory = References.LEGACY_NEXUS_DIR;
-                    }
-                    File file = new File(currentDirectory);
-                    if (file.exists()) {
-                        FileOperations.mountRW();
-                        FileOperations.delete(context, currentDirectory);
-                    }
-                }
 
                 // Enable finish install listener
                 boolean needToWait =

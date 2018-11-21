@@ -25,8 +25,6 @@
     <string name="refused_to_install_notification_button">Rimuovi tema</string>
     <string name="refused_to_install_title_notification">Il Themer ha rifiutato il tema installato su Samsung.</string>
     <string name="refused_to_install_text_notification">%s installazione fallita.</string>
-    <string name="failed_to_install_title_notification">Impossibile installare il tema OMS</string>
-    <string name="failed_to_install_text_notification">%s installazione fallita.</string>
     <string name="actionbar_theme_count_loading">caricamento&#8230;</string>
     <string name="actionbar_search">Cerca</string>
     <string name="actionbar_changelog">Changelog del tema</string>
@@ -36,7 +34,6 @@
     <string name="systemui_qs_tiles">Icone delle impostazioni rapide</string>
     <string name="systemui_statusbar">Icone della barra di stato</string>
     <string name="warning_title">ATTENZIONE!</string>
-    <string name="legacy_warning_content">Legacy è fornito così com\'è poiché non possiamo garantire la piena compatibilità con i colori. Assicurati di avere una custom recovery per il tuo dispositivo e di essere in grado di ripristinare il suo funzionamento in caso di bootloop prima di procedere.\n\nNoi non possiamo riparare le cose che non vengono temate nella modalità legacy perché richiedono modifiche di sistema.      </string>
     <string name="samsung_warning_content">Il supporto Samsung è fornito così com’è e non possiamo garantire
         una piena compatibilità con i colori e le sovrapposizioni AOSP. Abbiamo preso la cura di nascondere
         le sovrapposizioni pericolose per il tuo dispositivo, ma puoi attivarle manualmente nelle impostazioni
@@ -51,10 +48,7 @@
     <string name="new_stock_commits_text">Dopo la patch di sicurezza di Marzo, Google ha implementato un controllo sulle sovrapposizioni le quali avranno bisogno di un riavvio del dispositivo per attivare una sovrapposizione installata/aggiornata!</string>
     <string name="new_stock_commits_text_samsung">UTENTI SAMSUNG! Abbiamo aggiunto alcune cose alle sovrapposizioni recentemente compilate che Samsung usa per identificare le loro sovrapposizioni! Ciò significa che potrebbe essere necessario attendere che le sovrapposizioni siano installate prima del riavvio poiché Samsung ha aggiunto ritardi e blocchi per il rilevamento delle sovrapposizioni durante le installazioni! Tutte le sovrapposizioni della SystemUI devono essere abilitate prima di riavviare o sarà necessario riavviare e ripetere l\'intero processo!</string>
     <string name="new_stock_commits_text_pink">In quanto tale, questa sovrapposizione sarà in rosa e lo stato di abilitazione/disabilitazione verrà disabilitato fino al riavvio.</string>
-    <string name="legacy_dialog_soft_reboot_title">Riavvio necessario!</string>
-    <string name="legacy_dialog_soft_reboot_text">Eseguendo il sistema basato su Resource Runtime Overlay, è necessario effettuare un riavvio dopo aver aggiunto o rimosso delle sovrapposizioni.\n\nProcedendo con questa finestra di dialogo il dispositivo si riavvierà automaticamente, quindi si prega di assicurarsi di aver salvato il tuo lavoro prima di continuare.      </string>
     <string name="activity_missing_toast">Non sono state trovate applicazioni che possano occuparsi di questa richiesta, scusa!      </string>
-    <string name="abort_overlay_toast_success">Tutte le sovrapposizioni sono state disinstallate!</string>
     <string name="rescue_toast">Salvataggio del tuo sistema&#8230;</string>
     <string name="reboot_awaiting_manager_title">ERRORE DI LETTURA DELLA SOVRAPPOSIZIONE</string>
     <string name="manager_theme_name">Tema: %s</string>
@@ -242,7 +236,6 @@ Ciò significa che la sovrapposizione con la priorità più alta verrà caricata
     <string name="delete_dialog_text" formatted="false">Sei sicuro di voler eliminare \"%s\"?</string>
     <string name="restore">Ripristina carta</string>
     <string name="restore_card_content">Quando un profilo è caricato, il tuo settaggio corrente verrà completamente cancellato e \"ripristina tema\" prenderà le modifiche aggiornate.      </string>
-    <string name="remove_dialog_later">Più tardi</string>
     <string name="restore_dialog_okay">Continua</string>
     <string name="restore_dialog_title">Queste sovrapposizioni saranno installate per ripristinare completamente il tuo profilo:      </string>
     <string name="backup_button">FAI IL BACKUP DELLO STATO CORRENTE</string>
@@ -281,7 +274,6 @@ Ciò significa che la sovrapposizione con la priorità più alta verrà caricata
     <string name="toast_compiled_updated_with_errors">Sovrapposizione(i) selezionate aggiornate con errori!</string>
     <string name="toast_disabled3">Per favore compila questa sovrapposizione prima di applicarla!</string>
     <string name="toast_disabled5">Per favore seleziona una sovrapposizione valida prima di effettuare quest\'azione.</string>
-    <string name="toast_disabled6">Sovrapposizione(i) selezionata(e) rimossa(e)!</string>
     <string name="no_themes_title">nessun tema trovato&#8230;</string>
     <string name="no_overlays_title">nessuna sovrapposizione trovata&#8230;</string>
     <string name="no_themes_description">Per favore installa un tema compatibile!</string>
@@ -354,7 +346,6 @@ Ciò significa che la sovrapposizione con la priorità più alta verrà caricata
     <string name="fab_menu_enable">Abilita selezionati</string>
     <string name="fab_menu_enable_disable">Modifica gli stati della sovrapposizione</string>
     <string name="fab_menu_swap_toggle">Disabilita gli altri temi</string>
-    <string name="fab_menu_swap_toggle_legacy">Rimuovi tutti gli esistenti</string>
     <string name="team_title_one">Dirigenti di Substratum</string>
     <string name="team_text_one">Non solo abbiamo creato qualcosa che funzioni per gli utenti, ma abbiamo anche lavorato in congiunzione coi themer per renderlo un meraviglioso gestore di temi per la comunità!</string>
     <string name="team_title_two">Traduttori Substratum</string>

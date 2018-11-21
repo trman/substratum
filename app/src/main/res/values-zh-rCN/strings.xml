@@ -25,8 +25,6 @@
     <string name="refused_to_install_notification_button">移除主题</string>
     <string name="refused_to_install_title_notification">Themer 拒绝在三星设备上安装主题。</string>
     <string name="refused_to_install_text_notification">%s 安装失败。</string>
-    <string name="failed_to_install_title_notification">未能安装 OMS 主题</string>
-    <string name="failed_to_install_text_notification">%s 安装失败。</string>
     <string name="actionbar_theme_count_loading">正在加载</string>
     <string name="actionbar_search">查找</string>
     <string name="actionbar_changelog">主题更新日志</string>
@@ -36,7 +34,6 @@
     <string name="systemui_qs_tiles">快速设置图块</string>
     <string name="systemui_statusbar">状态栏图标</string>
     <string name="warning_title">警告！</string>
-    <string name="legacy_warning_content">我们之所以提供旧版是因为无法保证颜色的完全兼容。请确保您的设备刷写了第三方 recovery ，并知道如何从无限重启状态中恢复正常，而不会造成进一步的风险。\n\n因为需要系统层级的修改，所以我们无法修复旧版中未应用主题的项目。</string>
     <string name="samsung_warning_content">因为我们无法保证叠加层能完全兼容三星设备，所以我们对高风险叠加层进行了隐藏。您也可以手动关闭此功能。\n\n如果因应用高风险叠加层而导致黑屏，请参考我们 XDA 论坛上的两种解决方法。</string>
     <string name="xiaomi_warning_content">小米添加了额外的步骤以阻止substratum工作. \n\n您需要在开发者选项中启用 \"通过 USB 安装\" 和 \"USB 调试 (安全设置)\", 以及通常的 \"USB 调试\". \n\n若没有这些权限，叠加层将不会被安装!
       </string>
@@ -44,10 +41,7 @@
     <string name="new_stock_commits_text">在3月安全补丁后，谷歌实施了对叠加层的检查，需要重启设备以激活已安装/已更新的叠加层！</string>
     <string name="new_stock_commits_text_samsung">三星用户！我们已经添加了一些三星用来识别它们叠加层的东西到新编译的叠加层中，这意味着您可能需要等待一段时间直到您的叠加层安装后重新启动，因为三星增加了叠加层安装检测的延迟！在重新启动之前，必须启用所有应用在系统界面上的叠加层，否则您将需要重启并重做上述流程！</string>
     <string name="new_stock_commits_text_pink">因此，此叠加层将是粉红色的，启用/禁用叠加层将被禁用, 直到设备重启。</string>
-    <string name="legacy_dialog_soft_reboot_title">需要重新启动！</string>
-    <string name="legacy_dialog_soft_reboot_text">在 Resource Runtime Overlay（RRO）系统上运行时，添加或删除叠加层都需要重新启动系统。\n\n继续下一步将自动重启您的设备，所以在操作前请务必确认您已经保存正在进行的工作。</string>
     <string name="activity_missing_toast">抱歉，暂时没有发现可以处理此请求的应用！      </string>
-    <string name="abort_overlay_toast_success">已卸载所有叠加层</string>
     <string name="rescue_toast">正在禁用所有叠加层</string>
     <string name="reboot_awaiting_manager_title">叠加层读取错误</string>
     <string name="manager_theme_name">主题：%s</string>
@@ -233,7 +227,6 @@
     <string name="delete_dialog_text" formatted="false">请问您是否要删除\"%s\"？</string>
     <string name="restore">还原页面</string>
     <string name="restore_card_content">加载配置文件后，您当前的设置会被完全清除，“还原主题”将还原到更新过的设置。</string>
-    <string name="remove_dialog_later">推迟</string>
     <string name="restore_dialog_okay">继续</string>
     <string name="restore_dialog_title">为了完全还原您的配置，将会安装以下叠加层：</string>
     <string name="backup_button">备份当前状态</string>
@@ -272,7 +265,6 @@
     <string name="toast_compiled_updated_with_errors">叠加层更新时出现问题</string>
     <string name="toast_disabled3">应用前请先编译此叠加层</string>
     <string name="toast_disabled5">执行此操作前，请先选择一个有效的叠加层。</string>
-    <string name="toast_disabled6">叠加层已删除</string>
     <string name="no_themes_title">没有找到主题</string>
     <string name="no_overlays_title">未找到叠加层。</string>
     <string name="no_themes_description">请安装一个兼容的主题</string>
@@ -345,7 +337,6 @@
     <string name="fab_menu_enable">启用所选项</string>
     <string name="fab_menu_enable_disable">切换叠加层状态</string>
     <string name="fab_menu_swap_toggle">禁用其他主题</string>
-    <string name="fab_menu_swap_toggle_legacy">删除所有现有的</string>
     <string name="team_title_one">Substratum 领导者</string>
     <string name="team_text_one">我们与主题制作者们共同创造了一个完美的主题引擎，希望它能为用户带来更好的体验！</string>
     <string name="team_title_two">Substratum 翻译人员</string>

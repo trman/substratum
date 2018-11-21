@@ -128,54 +128,6 @@ public class PackageModificationDetector extends BroadcastReceiver {
             ApplicationInfo appInfo = context.getPackageManager()
                     .getApplicationInfo(packageName1, PackageManager.GET_META_DATA);
             if (appInfo.metaData != null) {
-                // Legacy check to see if an OMS theme is guarded from being installed on legacy
-                boolean checkLegacy = appInfo.metaData.getBoolean(References.metadataLegacy);
-                if (!Systems.checkOMS(context) && !checkLegacy) {
-                    Log.e(TAG, "Device is non-OMS, while an " +
-                            "OMS theme is installed, aborting operation!");
-
-                    String parse = String.format(context.getString(
-                            R.string.failed_to_install_text_notification),
-                            appInfo.metaData.getString(
-                                    References.metadataName));
-
-                    // Jot the notification id
-                    int notificationId = ThreadLocalRandom.current().nextInt(0, 10000);
-
-                    // Create an Intent for the BroadcastReceiver
-                    Intent buttonIntent = new Intent(context, UnsupportedThemeReceiver.class);
-                    buttonIntent.putExtra("package_to_uninstall", packageName1);
-                    buttonIntent.putExtra("notification_to_close", notificationId);
-
-                    // Create the PendingIntent
-                    PendingIntent btPendingIntent =
-                            PendingIntent.getBroadcast(
-                                    context,
-                                    notificationId,
-                                    buttonIntent,
-                                    PendingIntent.FLAG_CANCEL_CURRENT
-                            );
-
-                    NotificationManager notificationManager = (NotificationManager) context
-                            .getSystemService(Context.NOTIFICATION_SERVICE);
-                    NotificationCompat.Builder builder = new
-                            NotificationCompat.Builder(context,
-                            References.DEFAULT_NOTIFICATION_CHANNEL_ID)
-                            .setContentTitle(context.getString(
-                                    R.string.failed_to_install_title_notification))
-                            .setContentText(parse)
-                            .setAutoCancel(true)
-                            .setContentIntent(btPendingIntent)
-                            .addAction(android.R.color.transparent,
-                                    context.getString(R.string.refused_to_install_notification_button), btPendingIntent)
-                            .setSmallIcon(R.drawable.notification_warning_icon)
-                            .setPriority(Notification.PRIORITY_MAX);
-                    if (notificationManager != null) {
-                        notificationManager.notify(notificationId, builder.build());
-                    }
-                    return;
-                }
-
                 // Samsung check to see if an intentionally disable substratum theme was installed
                 // on a Samsung device
                 boolean samsungSupport = appInfo.metaData.getBoolean(metadataSamsungSupport, true);

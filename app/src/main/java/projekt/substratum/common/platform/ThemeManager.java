@@ -10,7 +10,6 @@ package projekt.substratum.common.platform;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.om.OM;
 import android.content.om.OverlayInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -19,7 +18,6 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Process;
 import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.RestrictTo;
@@ -55,7 +53,6 @@ import static projekt.substratum.common.Packages.getOverlayTarget;
 import static projekt.substratum.common.Packages.isPackageInstalled;
 import static projekt.substratum.common.References.EXTERNAL_STORAGE_SAMSUNG_OVERLAY_CACHE;
 import static projekt.substratum.common.References.INTERFACER_PACKAGE;
-import static projekt.substratum.common.References.LEGACY_NEXUS_DIR;
 import static projekt.substratum.common.Resources.FRAMEWORK;
 import static projekt.substratum.common.Resources.PIXEL_OVERLAY_PACKAGES;
 import static projekt.substratum.common.Resources.SETTINGS;
@@ -67,7 +64,6 @@ import static projekt.substratum.common.Resources.SYSTEMUI_QSTILES;
 import static projekt.substratum.common.Resources.SYSTEMUI_STATUSBARS;
 import static projekt.substratum.common.Systems.checkOMS;
 import static projekt.substratum.common.Systems.checkSubstratumService;
-import static projekt.substratum.common.Systems.checkThemeInterfacer;
 import static projekt.substratum.common.Systems.isAndromedaDevice;
 import static projekt.substratum.common.Systems.isNewSamsungDevice;
 import static projekt.substratum.common.Systems.isNewSamsungDeviceAndromeda;
@@ -156,14 +152,10 @@ public class ThemeManager {
         }
 
         boolean hasSS = checkSubstratumService(context);
-        boolean hasThemeInterfacer = checkThemeInterfacer(context);
         boolean hasAndromeda = isAndromedaDevice(context);
 
         if (hasSS) {
             SubstratumService.switchOverlay(overlays, true, shouldRestartUI(context, overlays));
-        } else if (hasThemeInterfacer) {
-            ThemeInterfacerService.enableOverlays(
-                    overlays, shouldRestartUI(context, overlays));
         } else if (hasAndromeda && !isNewSamsungDeviceAndromeda(context)) {
             if (!AndromedaService.enableOverlays(overlays)) {
                 Handler handler = new Handler(Looper.getMainLooper());
@@ -206,9 +198,6 @@ public class ThemeManager {
 
         if (checkSubstratumService(context)) {
             SubstratumService.switchOverlay(overlays, false, shouldRestartUI(context, overlays));
-        } else if (checkThemeInterfacer(context)) {
-            ThemeInterfacerService.disableOverlays(
-                    overlays, shouldRestartUI(context, overlays));
         } else if (isAndromedaDevice(context) && !isNewSamsungDeviceAndromeda(context)) {
             if (!AndromedaService.disableOverlays(overlays)) {
                 Handler handler = new Handler(Looper.getMainLooper());
@@ -246,9 +235,6 @@ public class ThemeManager {
     public static void setPriority(Context context, ArrayList<String> overlays) {
         if (checkSubstratumService(context)) {
             SubstratumService.setPriority(overlays, shouldRestartUI(context, overlays));
-        } else if (checkThemeInterfacer(context)) {
-            ThemeInterfacerService.setPriority(
-                    overlays, shouldRestartUI(context, overlays));
         } else if (isAndromedaDevice(context) && !isNewSamsungDeviceAndromeda(context)) {
             if (!AndromedaService.setPriority(overlays)) {
                 Handler handler = new Handler(Looper.getMainLooper());
@@ -296,8 +282,6 @@ public class ThemeManager {
         Substratum.log(References.SUBSTRATUM_LOG, "Restarting SystemUI");
         if (checkSubstratumService(context)) {
             SubstratumService.restartSystemUi();
-        } else if (checkThemeInterfacer(context)) {
-            ThemeInterfacerService.restartSystemUI();
         } else {
             Root.runCommand("pkill -f com.android.systemui");
         }
@@ -354,8 +338,7 @@ public class ThemeManager {
         try {
             // Throw certain exceptions intentionally when unsupported device found
             boolean substratumService = checkSubstratumService(context);
-            boolean themeInterfacer = checkThemeInterfacer(context);
-            if (!substratumService && !themeInterfacer) {
+            if (!substratumService) {
                 throw new Exception();
             }
             // Now let's assume everything that gets through will now be only in OMS ROMs
@@ -363,13 +346,6 @@ public class ThemeManager {
             if (substratumService) {
                 // For direct calls with the Substratum service
                 allOverlays = SubstratumService.getAllOverlays();
-            } else if (themeInterfacer) {
-                // The ol' way
-                try {
-                    allOverlays = OM.get().getAllOverlays(Process.myUid() / 100000);
-                } catch (Exception e) {
-                    // Ummmmmmmmmm
-                }
             }
             if (allOverlays != null) {
                 switch (secondaryState) {
@@ -420,7 +396,7 @@ public class ThemeManager {
                         "Could not queue all overlays from the Overlay Manager Service...");
             }
         } catch (Exception e) {
-            // At this point, we probably ran into a legacy command or stock OMS
+            // At this point, we probably ran into stock OMS
             if (!isNewSamsungDeviceAndromeda(context) &&
                     (Systems.checkOMS(context) || Systems.IS_OREO) &&
                     !MainActivity.instanceBasedAndromedaFailure) {
@@ -556,17 +532,6 @@ public class ThemeManager {
                                 }
                             }
                         }
-                    } else {
-                        File legacyCheck = new File(LEGACY_NEXUS_DIR);
-                        if (legacyCheck.exists() && legacyCheck.isDirectory()) {
-                            list.clear();
-                            String[] lister = legacyCheck.list();
-                            for (String aLister : lister) {
-                                if (aLister.endsWith(".apk")) {
-                                    list.add(aLister.substring(0, aLister.length() - 4));
-                                }
-                            }
-                        }
                     }
                 } else {
                     list.clear();
@@ -687,10 +652,6 @@ public class ThemeManager {
             ArrayList<String> list = new ArrayList<>();
             list.add(overlay);
             SubstratumService.installOverlay(list);
-        } else if (checkThemeInterfacer(context)) {
-            ArrayList<String> list = new ArrayList<>();
-            list.add(overlay);
-            ThemeInterfacerService.installOverlays(list);
         } else if (isAndromedaDevice(context) && !isNewSamsungDeviceAndromeda(context)) {
             List<String> list = new ArrayList<>();
             list.add(overlay);
@@ -737,10 +698,6 @@ public class ThemeManager {
         // if enabled list is not contains any overlays
         if (checkSubstratumService(context)) {
             SubstratumService.uninstallOverlay(overlays, shouldRestartUi);
-        } else if (checkThemeInterfacer(context) && !Systems.isSamsungDevice(context)) {
-            ThemeInterfacerService.uninstallOverlays(
-                    overlays
-            );
         } else if ((isAndromedaDevice(context) &&
                 !MainActivity.instanceBasedAndromedaFailure) &&
                 !Systems.isSamsungDevice(context)) {

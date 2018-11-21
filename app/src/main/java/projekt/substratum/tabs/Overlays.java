@@ -143,7 +143,6 @@ import static projekt.substratum.common.Resources.allowedAppOverlay;
 import static projekt.substratum.common.Resources.allowedFrameworkOverlay;
 import static projekt.substratum.common.Resources.allowedSettingsOverlay;
 import static projekt.substratum.common.Resources.allowedSystemUIOverlay;
-import static projekt.substratum.tabs.OverlaysManager.legacyDisable;
 import static projekt.substratum.tabs.OverlaysManager.selectEnabledDisabled;
 import static projekt.substratum.tabs.OverlaysManager.selectStateMode;
 import static projekt.substratum.util.helpers.MapUtils.sortMapByValues;
@@ -229,9 +228,6 @@ public class Overlays extends Fragment {
      */
     private void startDisable() {
         selectEnabledDisabled(this, DISABLE_MODE);
-        if (!Systems.checkOMS(context)) {
-            legacyDisable(this);
-        }
     }
 
     /**
@@ -1460,14 +1456,14 @@ public class Overlays extends Fragment {
         @Override
         protected void onPreExecute() {
             Overlays fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) setViews(fragment, false);
+            if (fragment.isAdded()) setViews(fragment, false);
         }
 
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             Overlays fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) {
+            if (fragment.isAdded()) {
                 setViews(fragment, true);
                 fragment.overlaysAdapter = new OverlaysAdapter(adapterList, fragment.context);
                 fragment.recyclerView.setAdapter(fragment.overlaysAdapter);
@@ -1483,7 +1479,7 @@ public class Overlays extends Fragment {
         @Override
         protected String doInBackground(String... sUrl) {
             Overlays fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) {
+            if (fragment.isAdded()) {
                 // Modularizing the compile process to make it easier to track errors
                 boolean assigned = assignVariables(fragment, this);
                 if (assigned) {

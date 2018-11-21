@@ -53,10 +53,8 @@ import projekt.substratum.common.Packages;
 import projekt.substratum.common.References;
 import projekt.substratum.common.Systems;
 import projekt.substratum.common.Theming;
-import projekt.substratum.common.commands.ElevatedCommands;
 import projekt.substratum.common.commands.FileOperations;
 import projekt.substratum.common.platform.SubstratumService;
-import projekt.substratum.common.platform.ThemeInterfacerService;
 import projekt.substratum.common.platform.ThemeManager;
 import projekt.substratum.common.systems.ProfileItem;
 import projekt.substratum.common.systems.ProfileManager;
@@ -94,7 +92,6 @@ import static projekt.substratum.common.Internal.LOCK_WALLPAPER_FILE_NAME;
 import static projekt.substratum.common.Internal.MAIN_FOLDER;
 import static projekt.substratum.common.Internal.NOTIF_THEME_DIRECTORY;
 import static projekt.substratum.common.Internal.NO_MEDIA;
-import static projekt.substratum.common.Internal.OVERLAY_DIR;
 import static projekt.substratum.common.Internal.OVERLAY_STATE_FILE;
 import static projekt.substratum.common.Internal.PROFILE_AUDIO;
 import static projekt.substratum.common.Internal.PROFILE_BOOTANIMATIONS;
@@ -103,8 +100,6 @@ import static projekt.substratum.common.Internal.PROFILE_FONTS;
 import static projekt.substratum.common.Internal.RINGTONE_THEME_DIRECTORY;
 import static projekt.substratum.common.Internal.SECRET_KEY_SPEC;
 import static projekt.substratum.common.Internal.SPECIAL_SNOWFLAKE_DELAY;
-import static projekt.substratum.common.Internal.SYSTEM_OVERLAY;
-import static projekt.substratum.common.Internal.SYSTEM_VENDOR_OVERLAY;
 import static projekt.substratum.common.Internal.THEME_644;
 import static projekt.substratum.common.Internal.THEME_755;
 import static projekt.substratum.common.Internal.THEME_DIR;
@@ -114,10 +109,7 @@ import static projekt.substratum.common.Internal.WALLPAPER_DIR;
 import static projekt.substratum.common.Internal.WALLPAPER_FILE_NAME;
 import static projekt.substratum.common.References.EXTERNAL_STORAGE_CACHE;
 import static projekt.substratum.common.References.KEY_RETRIEVAL;
-import static projekt.substratum.common.References.LEGACY_NEXUS_DIR;
-import static projekt.substratum.common.References.PIXEL_NEXUS_DIR;
 import static projekt.substratum.common.References.SUBSTRATUM_BUILDER_CACHE;
-import static projekt.substratum.common.References.VENDOR_DIR;
 import static projekt.substratum.common.References.metadataEncryption;
 import static projekt.substratum.common.References.metadataEncryptionValue;
 import static projekt.substratum.common.platform.ThemeManager.STATE_ENABLED;
@@ -523,7 +515,7 @@ public class ProfileFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             ProfileFragment profileFragment = ref.get();
-            if (profileFragment.isAdded() && profileFragment != null) {
+            if (profileFragment.isAdded()) {
                 profileFragment.headerProgress.setVisibility(View.VISIBLE);
             }
         }
@@ -532,7 +524,7 @@ public class ProfileFragment extends Fragment {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             ProfileFragment profileFragment = ref.get();
-            if (profileFragment.isAdded() && profileFragment != null) {
+            if (profileFragment.isAdded()) {
                 profileFragment.headerProgress.setVisibility(View.GONE);
                 if (Systems.checkOMS(profileFragment.context)) {
                     String directory_parse = String.format(
@@ -562,7 +554,7 @@ public class ProfileFragment extends Fragment {
         @Override
         protected String doInBackground(String... sUrl) {
             ProfileFragment profileFragment = ref.get();
-            if (profileFragment.isAdded() && profileFragment != null) {
+            if (profileFragment.isAdded()) {
                 String uid;
                 try {
                     uid = Environment.getExternalStorageDirectory().getAbsolutePath().split("/")[3];
@@ -678,86 +670,6 @@ public class ProfileFragment extends Fragment {
                                             (profileThemeFolder.delete() ? "success" : "failed"));
                         }
                     }
-                } else {
-                    String currentDirectory;
-                    if (projekt.substratum.common.Resources.inNexusFilter()) {
-                        currentDirectory = SYSTEM_OVERLAY;
-                    } else {
-                        currentDirectory = SYSTEM_VENDOR_OVERLAY;
-                    }
-                    File file = new File(currentDirectory);
-                    if (file.exists()) {
-                        FileOperations.mountRW();
-                        if (profileFragment.selectedBackup.contains(
-                                profileFragment.getString(R.string.profile_overlay))) {
-                            FileOperations.copyDir(profileFragment.context, currentDirectory,
-                                    Environment.getExternalStorageDirectory().getAbsolutePath() +
-                                            PROFILE_DIRECTORY);
-                            File oldFolder = new File(Environment
-                                    .getExternalStorageDirectory()
-                                    .getAbsolutePath() + PROFILE_DIRECTORY + OVERLAY_DIR);
-                            File newFolder = new File(Environment
-                                    .getExternalStorageDirectory()
-                                    .getAbsolutePath() + PROFILE_DIRECTORY +
-                                    profileFragment.backupGetText);
-                            boolean success = oldFolder.renameTo(newFolder);
-                            if (!success)
-                                Log.e(References.SUBSTRATUM_LOG,
-                                        "Could not move profile directory...");
-                        }
-
-                        if (profileFragment.selectedBackup.contains(
-                                profileFragment.getString(R.string.profile_sound))) {
-                            // Now begin backing up sounds
-                            FileOperations.copyDir(profileFragment.context,
-                                    AUDIO_THEME_DIRECTORY,
-                                    Environment.getExternalStorageDirectory()
-                                            .getAbsolutePath() + PROFILE_DIRECTORY
-                                            + profileFragment.backupGetText);
-                        }
-                        FileOperations.mountRO();
-
-                        // Don't forget the wallpaper if wanted
-                        if (profileFragment.selectedBackup.contains(
-                                profileFragment.getString(R.string.profile_wallpaper))) {
-                            File homeWall = new File(USERS_DIR + uid + WALLPAPER_DIR);
-                            if (homeWall.exists()) {
-                                FileOperations.copy(profileFragment.context, homeWall
-                                                .getAbsolutePath(),
-                                        Environment.getExternalStorageDirectory().getAbsolutePath()
-                                                + PROFILE_DIRECTORY +
-                                                profileFragment.backupGetText +
-                                                WALLPAPER_FILE_NAME);
-                            }
-                            File lockWall = new File(USERS_DIR + uid +
-                                    LOCK_WALLPAPER_FILE_NAME);
-                            if (lockWall.exists()) {
-                                FileOperations.copy(profileFragment.context,
-                                        lockWall.getAbsolutePath(),
-                                        Environment.getExternalStorageDirectory().getAbsolutePath()
-                                                + PROFILE_DIRECTORY +
-                                                profileFragment.backupGetText +
-                                                LOCK_WALLPAPER_FILE_NAME);
-                            }
-                        }
-
-                        // And boot animation if selected
-                        if (profileFragment.selectedBackup.contains(
-                                profileFragment.getString(R.string.profile_boot_animation))) {
-                            FileOperations.copy(profileFragment.context,
-                                    BOOTANIMATION_LOCATION,
-                                    Environment.getExternalStorageDirectory().getAbsolutePath()
-                                            + PROFILE_DIRECTORY +
-                                            profileFragment.backupGetText);
-                        }
-                    } else {
-                        if (profileFragment.getView() != null) {
-                            Lunchbar.make(profileFragment.getView(),
-                                    profileFragment.getString(R.string.backup_no_overlays),
-                                    Snackbar.LENGTH_LONG)
-                                    .show();
-                        }
-                    }
                 }
             }
             return null;
@@ -781,7 +693,7 @@ public class ProfileFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             ProfileFragment profileFragment = ref.get();
-            if (profileFragment.isAdded() && profileFragment != null) {
+            if (profileFragment.isAdded()) {
                 profileFragment.headerProgress.setVisibility(View.VISIBLE);
             }
         }
@@ -790,7 +702,7 @@ public class ProfileFragment extends Fragment {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             ProfileFragment profileFragment = ref.get();
-            if (profileFragment.isAdded() && profileFragment != null) {
+            if (profileFragment.isAdded()) {
                 if (Systems.checkOMS(profileFragment.context)) {
                     if (!profileFragment.cannotRunOverlays.isEmpty()) {
                         new AlertDialog.Builder(profileFragment.context)
@@ -822,131 +734,14 @@ public class ProfileFragment extends Fragment {
                         new ContinueRestore(profileFragment, profile_name, to_be_run)
                                 .execute();
                     }
-                } else {
-                    String currentDirectory;
-                    if (projekt.substratum.common.Resources.inNexusFilter()) {
-                        currentDirectory = PIXEL_NEXUS_DIR;
-                    } else {
-                        currentDirectory = LEGACY_NEXUS_DIR;
-                    }
-                    File file = new File(currentDirectory);
-                    if (file.exists()) {
-                        // Delete destination overlays
-                        FileOperations.mountRW();
-                        FileOperations.delete(profileFragment.context, currentDirectory);
-                        FileOperations.delete(profileFragment.context, THEME_DIRECTORY);
-                        FileOperations.createNewFolder(profileFragment.context, currentDirectory);
-                        FileOperations.createNewFolder(profileFragment.context, THEME_DIRECTORY);
-                        FileOperations.setPermissions(THEME_755, THEME_DIRECTORY);
-
-                        File profileApkFiles = new File(Environment
-                                .getExternalStorageDirectory()
-                                .getAbsolutePath() + PROFILE_DIRECTORY +
-                                profileFragment.profileSelector.getSelectedItem() + '/');
-                        String[] locatedFiles = profileApkFiles.list();
-                        for (String found : locatedFiles) {
-                            if (!"audio".equals(found)) {
-                                FileOperations.copyDir(profileFragment.context, Environment
-                                        .getExternalStorageDirectory()
-                                        .getAbsolutePath() +
-                                        PROFILE_DIRECTORY +
-                                        profileFragment.profileSelector.getSelectedItem() +
-                                        '/' + found, currentDirectory);
-                            } else {
-                                FileOperations.copyDir(profileFragment.context, Environment
-                                        .getExternalStorageDirectory()
-                                        .getAbsolutePath() +
-                                        PROFILE_DIRECTORY +
-                                        profileFragment.profileSelector.getSelectedItem() +
-                                        '/' + found + '/', AUDIO_THEME_DIRECTORY);
-                                FileOperations.setPermissionsRecursively(THEME_644,
-                                        AUDIO_THEME_DIRECTORY);
-                                FileOperations.setPermissions(THEME_755, AUDIO_THEME_DIRECTORY);
-                            }
-                        }
-                        FileOperations.setPermissionsRecursively(THEME_644, currentDirectory);
-                        FileOperations.setPermissions(THEME_755, currentDirectory);
-                        FileOperations.setSystemFileContext(currentDirectory);
-                        FileOperations.mountRO();
-                    } else {
-                        String vendorLocation = LEGACY_NEXUS_DIR;
-                        String vendorPartition = VENDOR_DIR;
-                        String currentVendor = projekt.substratum.common.Resources.inNexusFilter() ? vendorPartition : vendorLocation;
-                        FileOperations.mountRW();
-                        File vendor = new File(currentVendor);
-                        if (!vendor.exists()) {
-                            if (currentVendor.equals(vendorLocation)) {
-                                FileOperations.createNewFolder(currentVendor);
-                            } else {
-                                FileOperations.mountRWVendor();
-                                String vendorSymlink = PIXEL_NEXUS_DIR;
-                                FileOperations.createNewFolder(vendorSymlink);
-                                FileOperations.symlink(vendorSymlink, "/vendor");
-                                FileOperations.setPermissions(755, vendorPartition);
-                                FileOperations.mountROVendor();
-                            }
-                        }
-
-                        FileOperations.delete(profileFragment.context, THEME_DIRECTORY);
-                        FileOperations.createNewFolder(profileFragment.context, THEME_DIRECTORY);
-
-                        File profileApkFiles = new File(Environment
-                                .getExternalStorageDirectory()
-                                .getAbsolutePath() + PROFILE_DIRECTORY +
-                                profileFragment.profileSelector.getSelectedItem() + '/');
-                        String[] located_files = profileApkFiles.list();
-                        for (String found : located_files) {
-                            if (!"audio".equals(found)) {
-                                FileOperations.copyDir(profileFragment.context, Environment
-                                        .getExternalStorageDirectory()
-                                        .getAbsolutePath() +
-                                        PROFILE_DIRECTORY +
-                                        profileFragment.profileSelector.getSelectedItem() +
-                                        '/' + found, currentDirectory);
-                            } else {
-                                FileOperations.setPermissions(755, THEME_DIRECTORY);
-                                FileOperations.copyDir(profileFragment.context, Environment
-                                        .getExternalStorageDirectory()
-                                        .getAbsolutePath() +
-                                        PROFILE_DIRECTORY +
-                                        profileFragment.profileSelector.getSelectedItem() +
-                                        '/' + found + '/', AUDIO_THEME_DIRECTORY);
-                                FileOperations.setPermissionsRecursively(THEME_644,
-                                        AUDIO_THEME_DIRECTORY);
-                                FileOperations.setPermissions(THEME_755, AUDIO_THEME_DIRECTORY);
-                            }
-                        }
-                        FileOperations.setPermissionsRecursively(THEME_644, currentDirectory);
-                        FileOperations.setPermissions(THEME_755, currentDirectory);
-                        FileOperations.setSystemFileContext(currentDirectory);
-                        FileOperations.mountRO();
-
-                        // Restore wallpaper
-                        new ContinueRestore(profileFragment).execute();
-                    }
-                    AlertDialog.Builder alertDialogBuilder =
-                            new AlertDialog.Builder(profileFragment.context);
-                    alertDialogBuilder
-                            .setTitle(profileFragment.getString(
-                                    R.string.legacy_dialog_soft_reboot_title));
-                    alertDialogBuilder
-                            .setMessage(profileFragment.getString(
-                                    R.string.legacy_dialog_soft_reboot_text));
-                    alertDialogBuilder
-                            .setPositiveButton(
-                                    android.R.string.ok, (dialog, id) -> ElevatedCommands.reboot());
-                    alertDialogBuilder.setCancelable(false);
-                    AlertDialog alertDialog = alertDialogBuilder.create();
-                    alertDialog.show();
                 }
-                profileFragment.headerProgress.setVisibility(View.GONE);
             }
         }
 
         @Override
         protected String doInBackground(String... sUrl) {
             ProfileFragment profileFragment = ref.get();
-            if (profileFragment.isAdded() && profileFragment != null) {
+            if (profileFragment.isAdded()) {
                 if (Systems.checkOMS(profileFragment.context)) {  // RRO doesn't need this
                     profile_name = sUrl[0];
                     profileFragment.cannotRunOverlays = new ArrayList<>();
@@ -1061,12 +856,6 @@ public class ProfileFragment extends Fragment {
         private Cipher cipher;
         private boolean needToWait;
 
-        // Restore wallpaper
-        ContinueRestore(ProfileFragment profileFragment) {
-            super();
-            ref = new WeakReference<>(profileFragment);
-        }
-
         // All is well, continue enabling profile
         ContinueRestore(ProfileFragment profileFragment,
                         String profileName,
@@ -1092,7 +881,7 @@ public class ProfileFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             ProfileFragment profileFragment = ref.get();
-            if (profileFragment.isAdded() && profileFragment != null) {
+            if (profileFragment.isAdded()) {
                 progressDialog = new ProgressDialog(profileFragment.context);
                 progressDialog.setIndeterminate(true);
                 progressDialog.setCancelable(false);
@@ -1124,7 +913,7 @@ public class ProfileFragment extends Fragment {
         @Override
         protected Void doInBackground(Void... params) {
             ProfileFragment profileFragment = ref.get();
-            if (profileFragment.isAdded() && profileFragment != null) {
+            if (profileFragment.isAdded()) {
                 profileFragment.lateInstall = new ArrayList<>();
                 if (toBeCompiled != null) {
                     Map<String, ProfileItem> items =
@@ -1371,14 +1160,14 @@ public class ProfileFragment extends Fragment {
         @Override
         protected void onPostExecute(Void result) {
             ProfileFragment profileFragment = ref.get();
-            if (profileFragment.isAdded() && profileFragment != null) {
+            if (profileFragment.isAdded()) {
                 progressDialog.dismiss();
             }
         }
 
         void continueProcess() {
             ProfileFragment profileFragment = ref.get();
-            if (profileFragment.isAdded() && profileFragment != null) {
+            if (profileFragment.isAdded()) {
 
                 File theme = new File(Environment.getExternalStorageDirectory()
                         .getAbsolutePath() +
@@ -1431,12 +1220,6 @@ public class ProfileFragment extends Fragment {
                             toBeDisabled,
                             toBeRun,
                             shouldRestartUi);
-                } else if (Systems.checkThemeInterfacer(profileFragment.context)) {
-                    ThemeInterfacerService.applyProfile(
-                            profileName,
-                            toBeDisabled,
-                            toBeRun,
-                            shouldRestartUi);
                 } else {
                     // Restore the whole backed up profile back to /data/system/theme/
                     if (theme.exists()) {
@@ -1462,7 +1245,7 @@ public class ProfileFragment extends Fragment {
 
         void continueProcessWallpaper() {
             ProfileFragment profileFragment = ref.get();
-            if (profileFragment.isAdded() && profileFragment != null) {
+            if (profileFragment.isAdded()) {
                 String homeWallPath = Environment.getExternalStorageDirectory()
                         .getAbsolutePath() + PROFILE_DIRECTORY + profileName + WALLPAPER_FILE_NAME;
                 String lockWallPath = Environment.getExternalStorageDirectory()

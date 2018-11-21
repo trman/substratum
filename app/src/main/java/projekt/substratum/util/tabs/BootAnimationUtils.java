@@ -57,7 +57,6 @@ import static projekt.substratum.common.Internal.BYTE_ACCESS_RATE;
 import static projekt.substratum.common.Internal.ENCRYPTED_FILE_EXTENSION;
 import static projekt.substratum.common.Internal.SHUTDOWNANIMATION;
 import static projekt.substratum.common.Internal.SHUTDOWN_ANIMATION_APPLIED;
-import static projekt.substratum.common.Internal.SYSTEM_ADDON_DIR;
 import static projekt.substratum.common.References.EXTERNAL_STORAGE_CACHE;
 
 public class BootAnimationUtils {
@@ -65,7 +64,6 @@ public class BootAnimationUtils {
     private static final String TAG = "BootAnimationUtils";
     private static final String DATA_SYSTEM = "/data/system/theme/";
     private static final String SYSTEM_MEDIA = "/system/media/";
-    private static final String BACKUP_SCRIPT = "81-subsboot.sh";
 
     /**
      * Apply the boot animation
@@ -406,7 +404,7 @@ public class BootAnimationUtils {
                 Substratum.log(TAG, "Moving boot animation to theme directory " +
                         "and setting correct contextual parameters...");
                 boolean isEncrypted = Systems.getDeviceEncryptionStatus(context) > 1;
-                File themeDirectory;
+                File themeDirectory = new File(SYSTEM_MEDIA);
                 if (Systems.checkOMS(context)) {
                     if ((!isEncrypted || shutdownAnimation) &&
                             Systems.checkSubstratumFeature(context)) {
@@ -422,13 +420,7 @@ public class BootAnimationUtils {
                     } else {
                         Substratum.log(TAG, "Data partition on the current device is encrypted, using " +
                                 "dedicated encrypted bootanimation slot...");
-                        themeDirectory = new File(SYSTEM_MEDIA);
                     }
-                } else {
-                    Substratum.log("BootAnimationUtils",
-                            "Current device is on substratum legacy, " +
-                                    "using system bootanimation slot...");
-                    themeDirectory = new File(SYSTEM_MEDIA);
                 }
 
                 File scaledBootAnimCheck = new File(context.getCacheDir()
@@ -451,31 +443,6 @@ public class BootAnimationUtils {
                 // Inject backup script for encrypted legacy and encrypted OMS devices
                 if (!hasFailed && (isEncrypted || !Systems.checkOMS(context)) &&
                         !shutdownAnimation) {
-                    FileOperations.mountRW();
-                    File backupScript = new File(SYSTEM_ADDON_DIR + BACKUP_SCRIPT);
-
-                    if (Systems.checkSubstratumFeature(context)) {
-                        if (!backupScript.exists()) {
-                            AssetManager assetManager = context.getAssets();
-                            String backupScriptPath =
-                                    context.getFilesDir().getAbsolutePath() + '/' +
-                                            BACKUP_SCRIPT;
-                            try (OutputStream out = new FileOutputStream(backupScriptPath);
-                                 InputStream in = assetManager.open(BACKUP_SCRIPT)) {
-                                byte[] buffer = new byte[BYTE_ACCESS_RATE];
-                                int read;
-                                while ((read = in.read(buffer)) != -1) {
-                                    out.write(buffer, 0, read);
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            FileOperations.copy(context, context.getFilesDir()
-                                    .getAbsolutePath() +
-                                    '/' + BACKUP_SCRIPT, backupScript.getAbsolutePath());
-                            FileOperations.setPermissions(755, backupScript.getAbsolutePath());
-                        }
-                    }
 
                     File backupDirectory = new File(themeDirectory.getAbsolutePath() +
                             "/" + BOOTANIMATION_BU);
@@ -487,11 +454,7 @@ public class BootAnimationUtils {
                     File bootAnimationCheck = new File(themeDirectory.getAbsolutePath() +
                             "/" + BOOTANIMATION);
 
-                    if (backupDirectory.exists()) {
-                        if (backupScript.exists()) {
-                            Substratum.log(TAG, "Old bootanimation is backed up, ready to go!");
-                        }
-                    } else if (!bootAnimationCheck.exists() && !backupDirectory.exists()) {
+                    if (!bootAnimationCheck.exists() && !backupDirectory.exists()) {
                         Substratum.log(TAG, "There is no predefined bootanimation on this device, " +
                                 "injecting a brand new default bootanimation...");
                     } else {

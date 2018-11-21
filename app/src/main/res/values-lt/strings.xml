@@ -25,8 +25,6 @@
     <string name="refused_to_install_notification_button">Pašalinti Temą</string>
     <string name="refused_to_install_title_notification">Apipavidolintojas atmetė temą, kuri įdiegta į \"Samsung\".</string>
     <string name="refused_to_install_text_notification">%s nepavyko įdiegti.</string>
-    <string name="failed_to_install_title_notification">Klaida įdiegiant \"OMS\" temą</string>
-    <string name="failed_to_install_text_notification">%s nepavyko įdiegti.</string>
     <string name="actionbar_theme_count_loading">kraunama&#8230;</string>
     <string name="actionbar_search">Ieškoti</string>
     <string name="actionbar_changelog">Temos pakeitimų sąrašas</string>
@@ -36,8 +34,7 @@
     <string name="systemui_qs_tiles">Sistemos NS \"QS\" plytelių piktogramos</string>
     <string name="systemui_statusbar">Sistemos NS Būsenos Juostos Piktogramos</string>
     <string name="warning_title">DĖMESIO!</string>
-    <string name="legacy_warning_content">\"Legacy\" yra numatyta ir mes negarantuojame, kad tai jums veiks. Prašome įsitikinti, kad jūs turite pasirinktinį atkūrimo režimą savo įrenginyje ir suprantate, kaip atstatyti įkrovos kilpą prieš tęsiant toliau.\n\nMes negalime sutvarkyti dalykus, kurie negauna apipavidalinimo ant \"legacy\", nes jie reikalauja pakeitimų iš sistemos pusės.      </string>
-    <string name="samsung_warning_content">\"Samsung\" palikymas teikiamas, bet mes negalime garantuoti visiško suderinamumo su spalvomis ir \"AOSP-built\" perdangomis. Mes pasirūpinome ir paslėpėme  pavojingas perdangas jūsų įrenginiui, tačiau rankiniu būdu galite tai išjungti nustatymuose savo nuožiūra.\n\nJei bet kokiu atveju susidursite su galima juodojo ekrano problema, prašome pasikonsultuoti mūsų \"XDA\" temoje dėl dviejų atkūrimo būdų.    
+    <string name="samsung_warning_content">\"Samsung\" palikymas teikiamas, bet mes negalime garantuoti visiško suderinamumo su spalvomis ir \"AOSP-built\" perdangomis. Mes pasirūpinome ir paslėpėme  pavojingas perdangas jūsų įrenginiui, tačiau rankiniu būdu galite tai išjungti nustatymuose savo nuožiūra.\n\nJei bet kokiu atveju susidursite su galima juodojo ekrano problema, prašome pasikonsultuoti mūsų \"XDA\" temoje dėl dviejų atkūrimo būdų.
 
       </string>
     <string name="xiaomi_warning_content">Xiaomi pridėjo papildomų priemonių, kad \"substratum\" veiktu taip,
@@ -49,10 +46,7 @@
     <string name="new_stock_commits_text">Po kovo saugumo pataisos \"Google\" įdiegė sluoksnių patikrinimą, kurio metu reikia paleisti iš naujo, kad įjungtumėte įdiegtą / atnaujintą perdangą!</string>
     <string name="new_stock_commits_text_samsung">\"SAMSUNG\" NAUDOTOJAU! Mes pridėjome keletą dalykų į naujai sudarytas perdangas, kurias \"Samsung\" naudoja savo sluoksnių identifikavimui nustatyti! Tai reiškia, kad turėsite palaukti, kol jūsų perdangos bus įdiegtos prieš paleidžiant iš naujo, nes \"Samsung\" įdiegė vėlavimą ir blokuoja perdangos aptikimą įdiegiant. Visos SistemosNS perdangos turi būti įjungtos prieš paleidžiant iš naujo arba jums reikės iš naujo paleisti ir vėl atlikti visą procesą!</string>
     <string name="new_stock_commits_text_pink">Tokiu atveju ši perdanga bus rožinė, o būsena bus įjungta / išjungta, kol bus paleista iš naujo.</string>
-    <string name="legacy_dialog_soft_reboot_title">Būtina paleisti iš naujo!</string>
-    <string name="legacy_dialog_soft_reboot_text">Naudojant \"Resource Runtime Overlay\" sistemą, būtina paleisti iš naujo po perdangų pridėjimo/pašalinimo.\n\nSekant šį dialogą jums automatiškai paleis įrenginį iš naujo, todėl būkite tikri, kad išsaugojote savo darbą prieš tęsdami.      </string>
     <string name="activity_missing_toast">Nebuvo rasta nei viena programėlė, kuri galėtu palaikyti šį prašymą. Atsiprašome!      </string>
-    <string name="abort_overlay_toast_success">Visos perdangos pašalintos!</string>
     <string name="rescue_toast">Gelbėjama jūsų sistema&#8230;</string>
     <string name="reboot_awaiting_manager_title">SKAITOMOS PERDANGOS KLAIDA</string>
     <string name="manager_theme_name">Tema: %s</string>
@@ -250,7 +244,6 @@
     <string name="delete_dialog_text" formatted="false">Ar jūs tikras, kad norite ištrinti \"%s\"?</string>
     <string name="restore">Atkūrimo Kortelė</string>
     <string name="restore_card_content">Kai jūsų profilis įkeltas, jūsų dabartinis nustatymas būna visiškai išvalytas ir \"atkurti temą\" užtruks dėl atnaujinimo pokyčių.      </string>
-    <string name="remove_dialog_later">Vėliau</string>
     <string name="restore_dialog_okay">Tęsti</string>
     <string name="restore_dialog_title">Šios perdangos buvo įsiegtos, kad visiškai atkurtų jūsų profilį:
       </string>
@@ -290,7 +283,6 @@
     <string name="toast_compiled_updated_with_errors">Pasirinkta(os) perdanga(os) atnaujinta(os) su klaidomis!</string>
     <string name="toast_disabled3">Prašome sukompiliuoti šią perdangą prieš pritaikant!</string>
     <string name="toast_disabled5">Prašome pasirinkti tinkamą perdangą prieš atliekant šį veiksmą.</string>
-    <string name="toast_disabled6">Pasirinkta(os) perdanga(os) pašalinta(os)!</string>
     <string name="no_themes_title">nerasta jokių temų&#8230;</string>
     <string name="no_overlays_title">nerasta jokių perdangų&#8230;</string>
     <string name="no_themes_description">prašome įdiegti suderinamą temą!</string>
@@ -364,7 +356,6 @@
     <string name="fab_menu_enable">Įjungti pasirinktus</string>
     <string name="fab_menu_enable_disable">Keisti perdangos būseną</string>
     <string name="fab_menu_swap_toggle">Išjungti kitas temas</string>
-    <string name="fab_menu_swap_toggle_legacy">Pašalinti visus esamus</string>
     <string name="team_title_one">\"Substratum\" Lyderiai</string>
     <string name="team_text_one">Mes ne tik sukūrėme kažką, kas dirba vartotojams, bet mes dirbome kartu su apipavidalintojais, kad sukurti nuostabų apipavidalinimo variklį bendruomenei!</string>
     <string name="team_title_two">\"Substratum\" Vertėjai</string>

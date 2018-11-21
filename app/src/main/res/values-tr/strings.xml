@@ -27,8 +27,6 @@
     <string name="refused_to_install_notification_button">Temayı Kaldır</string>
     <string name="refused_to_install_title_notification">Tema geliştirici, temanın Samsung\'a yüklenmesini kabul etmiyor.</string>
     <string name="refused_to_install_text_notification">%s yükleme başarısız.</string>
-    <string name="failed_to_install_title_notification">OMS teması yüklenemedi</string>
-    <string name="failed_to_install_text_notification">%s yükleme başarısız.</string>
     <string name="actionbar_theme_count_loading">yükleniyor&#8230;</string>
     <string name="actionbar_search">Ara</string>
     <string name="actionbar_changelog">Tema Değişiklikleri</string>
@@ -38,12 +36,6 @@
     <string name="systemui_qs_tiles">Sistem Hızlı Ayarlar Kare Simgeleri</string>
     <string name="systemui_statusbar">Sistem Durum Çubuğu Simgeleri</string>
     <string name="warning_title">UYARI!</string>
-    <string name="legacy_warning_content">Legacy, renklerle tam uyumluluğu garanti edemediğimiz
-      haliyle olduğu gibi sağlanmaktadır. Lütfen cihazınızda özel kurtarma (Twrp) yüklü
-      olduğundan ve daha ileri gitmeden önce bir önyükleme döngüsünü nasıl düzeltebileceğiniz
-      konusunda bir bilgiye sahip olduğunuzdan emin olun.\n\nSistem tarafında yapılan değişiklikleri
-      gerektirdikleri için legacy temalara geçilemiyor, bunu düzeltemeyiz.
-      </string>
     <string name="samsung_warning_content">Samsung desteği, renkler ve AOSP tarafından oluşturulan temalarla
       tam uyumluluğu garanti edemediğimiz haliyle olduğu gibi sağlanır. Cihazınız için tehlikeli
       temaları saklamaya özen gösterdik, ancak kendi takdirinize bağlı olarak bu ayarları
@@ -59,16 +51,9 @@
     <string name="new_stock_commits_text">Mart ayı güvenlik yamasının ardından Google, yüklü/güncellenmiş bir temayı etkinleştirmek için yeniden başlatılması gereken temalara bir kontrol uyguladı!</string>
     <string name="new_stock_commits_text_samsung">SAMSUNG KULLANICILARI! Samsung\'un temalarını tanımlamak için kullandığı yeni düzenlenmiş temalara birkaç şey ekledik! Bu, Samsung\'un gecikmeleri ve yüklemelerde tema algılama için blok ekledikçe, yeniden başlatmadan önce temalarınızın yüklenmesini beklemeniz gerekebileceği anlamına geliyor! Tüm Sistem Kullanıcı Arayüzü temaları yeniden başlatmadan önce etkinleştirilmeli veya yeniden başlatmanız ve tüm işlemi tekrar yapmanız gerekecektir!</string>
     <string name="new_stock_commits_text_pink">Bu şekilde, bu tema pembe renkte olacak ve etkinleştirme/devre dışı bırakma durumu yeniden başlatılıncaya kadar devre dışı bırakılacaktır.</string>
-    <string name="legacy_dialog_soft_reboot_title">Yeniden başlatma gereklidir!</string>
-    <string name="legacy_dialog_soft_reboot_text">Kaynak Çalışma Zamanı Tema sisteminde çalışan temaları ekledikten
-      veya kaldırdıktan sonra yeniden başlatma gerçekleştirmeniz gerekir.\n\nBu iletişim
-      kutusuyla devam etmek cihazınızı otomatik olarak yeniden başlatır, bu nedenle devam
-      etmeden önce çalışmalarınızı kaydettiğinizden emin olun.
-      </string>
     <string name="activity_missing_toast">Bu isteği yapabilecek herhangi bir uygulama bulunamadı
       üzgünüm!
       </string>
-    <string name="abort_overlay_toast_success">Tüm temalar kaldırıldı!</string>
     <string name="rescue_toast">Sisteminiz kurtarılıyor&#8230;</string>
     <string name="reboot_awaiting_manager_title">TEMA OKUMA HATASI</string>
     <string name="manager_theme_name">Tema: %s</string>
@@ -288,7 +273,6 @@
     <string name="restore_card_content">Bir profil yüklendiğinde, mevcut kurulumunuz tamamen silinir ve
       \"temayı geri yükleme\" güncellenmiş değişiklikleri alacaktır.
       </string>
-    <string name="remove_dialog_later">Sonra</string>
     <string name="restore_dialog_okay">Devam</string>
     <string name="restore_dialog_title">Profilinizi tamamen geri yüklemek için lütfen bu temaları
       yükleyin:
@@ -342,7 +326,6 @@
     <string name="toast_compiled_updated_with_errors">Seçili temalar bazı hatalarla güncellendi!</string>
     <string name="toast_disabled3">Lütfen uygulamadan önce temayı düzenleyin!</string>
     <string name="toast_disabled5">Bu işlemi gerçekleştirmeden önce lütfen geçerli bir tema seçin.</string>
-    <string name="toast_disabled6">Seçilen temalar kaldırıldı!</string>
     <string name="no_themes_title">tema bulunamadı&#8230;</string>
     <string name="no_overlays_title">tema bulunamadı&#8230;</string>
     <string name="no_themes_description">lütfen uyumlu bir tema yükleyin!</string>
@@ -418,7 +401,6 @@
     <string name="fab_menu_enable">Seçilenleri etkinleştir</string>
     <string name="fab_menu_enable_disable">Tema durumlarını değiştir</string>
     <string name="fab_menu_swap_toggle">Diğer temalar devre dışı</string>
-    <string name="fab_menu_swap_toggle_legacy">Mevcut olanların tümünü kaldır</string>
     <string name="team_title_one">Substratum Liderleri</string>
     <string name="team_text_one">Kullanıcılar için işe yarayan bir şeyler yapmamızın yanı sıra, topluluk için harika bir tema motoru haline getirmek için tema geliştiricileri ile birlikte çalıştık!</string>
     <string name="team_title_two">Substratum Çevirmenleri</string>

@@ -11,7 +11,6 @@ import android.content.Context;
 import projekt.substratum.Substratum;
 import projekt.substratum.common.commands.FileOperations;
 import projekt.substratum.common.platform.SubstratumService;
-import projekt.substratum.common.platform.ThemeInterfacerService;
 
 import static projekt.substratum.common.Internal.BOOTANIMATION;
 import static projekt.substratum.common.Internal.BOOTANIMATION_BU_LOCATION;
@@ -25,7 +24,6 @@ import static projekt.substratum.common.Internal.THEME_755;
 import static projekt.substratum.common.Internal.THEME_DIRECTORY;
 import static projekt.substratum.common.References.EXTERNAL_STORAGE_CACHE;
 import static projekt.substratum.common.Systems.checkSubstratumService;
-import static projekt.substratum.common.Systems.checkThemeInterfacer;
 import static projekt.substratum.common.Systems.getDeviceEncryptionStatus;
 
 public class BootAnimationsManager {
@@ -54,9 +52,6 @@ public class BootAnimationsManager {
                 } else {
                     SubstratumService.setBootAnimation(location);
                 }
-            } else if (checkThemeInterfacer(context)) {
-                Substratum.log(TAG, "No-root option has been enabled with the inclusion of theme interfacer...");
-                ThemeInterfacerService.setBootAnimation(location);
             }
         } else {
             // We will mount system, make our directory, copy the bootanimation
@@ -81,8 +76,9 @@ public class BootAnimationsManager {
      */
     public static void clearBootAnimation(Context context,
                                           boolean shutdownAnimation) {
+        final boolean isEncrypted = getDeviceEncryptionStatus(context) <= 1;
         // Shutdown animation is working on encrypted devices
-        if (shutdownAnimation || getDeviceEncryptionStatus(context) <= 1) {
+        if (shutdownAnimation || isEncrypted) {
             // OMS with theme interface
             if (checkSubstratumService(context)) {
                 if (shutdownAnimation) {
@@ -90,8 +86,6 @@ public class BootAnimationsManager {
                 } else {
                     SubstratumService.clearBootAnimation();
                 }
-            } else if (checkThemeInterfacer(context)) {
-                ThemeInterfacerService.clearBootAnimation();
             } else {
                 if (shutdownAnimation) {
                     FileOperations.delete(context, THEME_DIRECTORY + SHUTDOWNANIMATION);
@@ -99,7 +93,7 @@ public class BootAnimationsManager {
                     FileOperations.delete(context, THEME_DIRECTORY + BOOTANIMATION);
                 }
             }
-        } else {
+        } else if (isEncrypted) {
             // Encrypted OMS and legacy
             FileOperations.mountRW();
             FileOperations.move(context,

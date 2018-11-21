@@ -23,12 +23,9 @@ import projekt.substratum.common.platform.ThemeManager;
 import projekt.substratum.databinding.TabOverlaysItemBinding;
 import projekt.substratum.util.views.SheetDialog;
 
-import java.io.File;
 import java.util.List;
 
 import static projekt.substratum.common.Packages.isPackageInstalled;
-import static projekt.substratum.common.References.LEGACY_NEXUS_DIR;
-import static projekt.substratum.common.References.PIXEL_NEXUS_DIR;
 import static projekt.substratum.common.Systems.checkOMS;
 import static projekt.substratum.common.Systems.isSamsungDevice;
 
@@ -98,21 +95,6 @@ public class OverlaysAdapter extends RecyclerView.Adapter<OverlaysAdapter.ViewHo
                     (overlaysItem.isOverlayEnabled() ? INSTALLED_ENABLED : NOT_INSTALLED));
             viewBinding.overlayState.setVisibility(
                     overlaysItem.isOverlayEnabled() ? View.VISIBLE : View.GONE);
-        } else {
-            // Nougat based RRO/Legacy check
-            File file = new File(PIXEL_NEXUS_DIR);
-            File file2 = new File(LEGACY_NEXUS_DIR);
-            if (file.exists() || file2.exists()) {
-                String directoryAppend =
-                        '/' + overlaysItem.getPackageName() +
-                                '.' + overlaysItem.getThemeName() + ".apk";
-                File filer1 = new File(file.getAbsolutePath() + directoryAppend);
-                File filer2 = new File(file2.getAbsolutePath() + directoryAppend);
-                changeOverlayTargetPackageNameTint(viewBinding, context,
-                        (filer1.exists() || filer2.exists() ? INSTALLED_ENABLED : NOT_INSTALLED));
-                viewBinding.overlayState.setVisibility(
-                        overlaysItem.isOverlayEnabled() ? View.VISIBLE : View.GONE);
-            }
         }
         // Now let's check if the state needs changing...
         if (viewBinding.overlayState.getVisibility() == View.VISIBLE) {

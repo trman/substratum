@@ -26,8 +26,6 @@
     <string name="refused_to_install_notification_button">Remover Tema</string>
     <string name="refused_to_install_title_notification">O Tema rejeita ser instalado no Samsung.</string>
     <string name="refused_to_install_text_notification">%s falhou ao instalar.</string>
-    <string name="failed_to_install_title_notification">Falha ao instalar um tema OMS</string>
-    <string name="failed_to_install_text_notification">%s falhou ao instalar.</string>
     <string name="actionbar_theme_count_loading">carregando&#8230;</string>
     <string name="actionbar_search">Pesquisar</string>
     <string name="actionbar_changelog">Lista de alterações do tema</string>
@@ -37,9 +35,6 @@
     <string name="systemui_qs_tiles">Ícones das Configurações Rápidas da Interface de Usuário do sistema</string>
     <string name="systemui_statusbar">Ícones da Barra de Status</string>
     <string name="warning_title">ATENÇÃO!</string>
-    <string name="legacy_warning_content">A compatibilidade de temas é fornecida tal Como Está, uma vez que não podemos garantir uma compatibilidade completa de cores. Certifique-se de que tem uma Recuperação personalizada para o seu dispositivo e
-conhecimentos sobre como restaurar a partir de um bootloop antes de prosseguir.\n\nNão podemos
-corrigir coisas que não estão sendo aplicadas nos temas em modo de compatibilidade, pois estas exigem mudanças ao nível do sistema.      </string>
     <string name="samsung_warning_content">O suporte para Samsung é fornecido como está, pois não podemos garantir compatibilidade total com cores e camadas construídas para AOSP. Nós cuidamos de esconder as camadas perigosas para o seu dispositivo, mas você pode mudar isso manualmente nas configurações, a seu critério.\n\nSe de qualquer forma você chegar a ter um problema com uma possível tela preta, consulte nosso tópico no XDA sobre os dois métodos de recuperação.
       </string>
     <string name="xiaomi_warning_content">A Xiaomi adicionou passos extras para prevenir que o substratum funcione tal como ele é.\n\nVocê precisará ter as opções \"Instalar através de USB\" e \"Depuração USB (Definições de Segurança)\"
@@ -50,14 +45,8 @@ corrigir coisas que não estão sendo aplicadas nos temas em modo de compatibili
     <string name="new_stock_commits_text">Com o patch de segurança de Março de 2018, a Google implementou uma validação às camadas que faz com que seja necessário reiniciar o dispositivo para ativar camadas instaladas/atualizadas!</string>
     <string name="new_stock_commits_text_samsung">USUÁRIO SAMSUNG! Adicionamos algumas coisas às camadas compiladas recentemente, coisas que a Samsung utiliza para identificar as suas próprias camadas. Isto significa que poderá precisar de esperar até que as suas camadas sejam instaladas antes de reiniciar o dispositivo, uma vez que a Samsung adicionou atrasos e bloqueios para a deteção de instalações de camadas!</string>
     <string name="new_stock_commits_text_pink">Como tal, esta camada ficará cor-de-rosa e a possibilidade de ativar/desativar só ficará disponível depois de reiniciar.</string>
-    <string name="legacy_dialog_soft_reboot_title">Reinício necessário!</string>
-    <string name="legacy_dialog_soft_reboot_text">Executando no sistema Resource Runtime Overlay (RRO),
-        é necessário reiniciar após a adição ou remoção de camadas.\n\nProsseguir com este
-        dialogo irá reiniciar o seu dispositivo automaticamente, por isso certifique-se de ter salvo o seu trabalho
-        antes de continuar.      </string>
     <string name="activity_missing_toast">Não foi encontrado nenhum aplicativo que pudesse lidar com este
         pedido, desculpe!      </string>
-    <string name="abort_overlay_toast_success">Todas as camadas foram removidas!</string>
     <string name="rescue_toast">Restaurando seu sistema&#8230;</string>
     <string name="reboot_awaiting_manager_title">ERRO AO LER A CAMADA</string>
     <string name="manager_theme_name">Tema: %s</string>
@@ -263,7 +252,6 @@ sistema, você deve ativar \'Permitir modificar configurações do sistema\'.   
     <string name="restore">Restaurar Cartão</string>
     <string name="restore_card_content">Quando um perfil é carregado, sua configuração atual é completamente
       apagada e \"restaurar tema\" assumiria as alterações atualizadas.      </string>
-    <string name="remove_dialog_later">Depois</string>
     <string name="restore_dialog_okay">Continuar</string>
     <string name="restore_dialog_title">Estas camadas serão instaladas para restaurar seu perfil
         completamente:      </string>
@@ -305,7 +293,6 @@ sistema, você deve ativar \'Permitir modificar configurações do sistema\'.   
     <string name="toast_compiled_updated_with_errors">A camada (as) selecionada foi atualizada com erros!</string>
     <string name="toast_disabled3">Favor compilar esta camada antes de aplicar!</string>
     <string name="toast_disabled5">Por favor selecione uma camada valida antes de realizar essa ação.</string>
-    <string name="toast_disabled6">Camada(s) selecionada(s) removida(s)!</string>
     <string name="no_themes_title">nenhum tema encontrado&#8230;</string>
     <string name="no_overlays_title">nenhuma camada encontrada&#8230;</string>
     <string name="no_themes_description">favor instalar um tema compatível!</string>
@@ -378,7 +365,6 @@ sistema, você deve ativar \'Permitir modificar configurações do sistema\'.   
     <string name="fab_menu_enable">Habilitar selecionado</string>
     <string name="fab_menu_enable_disable">Mudar estados de camadas</string>
     <string name="fab_menu_swap_toggle">Desabilitar outros temas</string>
-    <string name="fab_menu_swap_toggle_legacy">Remover todos existentes</string>
     <string name="team_title_one">Líderes do Substratum</string>
     <string name="team_text_one">Não somente criamos algo que funciona para os usuários, como também trabalhamos em conjunto com criadores de temas para torná-lo um maravilhoso motor de temas para a comunidade!</string>
     <string name="team_title_two">Tradutores do Substratum</string>

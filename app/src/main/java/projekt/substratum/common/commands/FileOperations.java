@@ -20,7 +20,6 @@ import projekt.substratum.Substratum;
 import projekt.substratum.common.References;
 import projekt.substratum.common.Systems;
 import projekt.substratum.common.platform.SubstratumService;
-import projekt.substratum.common.platform.ThemeInterfacerService;
 import projekt.substratum.util.helpers.Root;
 
 import javax.crypto.Cipher;
@@ -143,13 +142,6 @@ public class FileOperations {
     }
 
     /**
-     * Mount vendor RW
-     */
-    public static void mountRWVendor() {
-        Root.runCommand("mount -t auto -o " + checkBox("rw") + " /vendor");
-    }
-
-    /**
      * Mount system RO
      */
     public static void mountRO() {
@@ -169,13 +161,6 @@ public class FileOperations {
     }
 
     /**
-     * Mount vendor RO
-     */
-    public static void mountROVendor() {
-        Root.runCommand("mount -t auto -o " + checkBox("ro") + " /vendor");
-    }
-
-    /**
      * Create a new folder
      *
      * @param context     Context
@@ -191,8 +176,6 @@ public class FileOperations {
                 !destination.startsWith(externalDir) && !destination.startsWith("/system"));
         if (checkSubstratumService(context) && needRoot) {
             SubstratumService.createNewFolder(destination);
-        } else if (checkThemeInterfacer(context) && needRoot) {
-            ThemeInterfacerService.createNewFolder(destination);
         } else {
             createNewFolder(destination);
         }
@@ -236,24 +219,6 @@ public class FileOperations {
             Substratum.log(COPY_LOG,
                     "Using substratum service operation to copy " + source + " to " + destination);
             SubstratumService.copy(source, destination);
-        } else if (checkThemeInterfacer(context) && needRoot) {
-            Substratum.log(COPY_LOG,
-                    "Using theme interface operation to copy " + source + " to " + destination);
-            ThemeInterfacerService.copy(source, destination);
-
-            // Wait until copy succeeds
-            try {
-                int retryCount = 0;
-                final File file = new File(destination);
-                while (!file.exists() && (retryCount < 5)) {
-                    Thread.sleep(1000L);
-                    retryCount++;
-                }
-                if (retryCount == 5) Substratum.log(COPY_LOG, "Operation timed out!");
-                Substratum.log(COPY_LOG, "Operation " + (file.exists() ? "succeeded" : "failed"));
-            } catch (final InterruptedException e) {
-                Thread.interrupted();
-            }
         } else {
             copy(source, destination);
         }
@@ -374,24 +339,6 @@ public class FileOperations {
         if (checkSubstratumService(context) && needRoot) {
             Substratum.log(DELETE_LOG, "Using substratum service operation to delete " + directory);
             SubstratumService.delete(directory, deleteParent);
-        } else if (checkThemeInterfacer(context) && needRoot) {
-            Substratum.log(DELETE_LOG, "Using theme interfacer operation to delete " + directory);
-            ThemeInterfacerService.delete(directory, deleteParent);
-
-            // Wait until delete success
-            try {
-                int retryCount = 0;
-                final File file = new File(directory);
-                final boolean notDone = deleteParent ? file.exists() : file.list().length == 0;
-                while (notDone && (retryCount < 5)) {
-                    Thread.sleep(1000L);
-                    retryCount++;
-                }
-                if (retryCount == 5) Substratum.log(DELETE_LOG, "Operation timed out!");
-                Substratum.log(DELETE_LOG, "Operation " + (!file.exists() ? "succeeded" : "failed"));
-            } catch (final InterruptedException e) {
-                Thread.interrupted();
-            }
         } else {
             delete(directory, deleteParent);
         }
@@ -455,24 +402,6 @@ public class FileOperations {
             Substratum.log(MOVE_LOG,
                     "Using substratum service operation to move " + source + " to " + destination);
             SubstratumService.move(source, destination);
-        } else if (checkThemeInterfacer(context) && needRoot) {
-            Substratum.log(MOVE_LOG,
-                    "Using theme interfacer operation to move " + source + " to " + destination);
-            ThemeInterfacerService.move(source, destination);
-
-            // Wait until move success
-            try {
-                int retryCount = 0;
-                final File file = new File(destination);
-                while (!file.exists() && (retryCount < 5)) {
-                    Thread.sleep(1000L);
-                    retryCount++;
-                }
-                if (retryCount == 5) Substratum.log(MOVE_LOG, "Operation timed out");
-                Substratum.log(MOVE_LOG, "Operation " + (file.exists() ? "succeeded" : "failed"));
-            } catch (final InterruptedException e) {
-                Thread.interrupted();
-            }
         } else {
             move(source, destination);
         }

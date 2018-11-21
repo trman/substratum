@@ -41,11 +41,8 @@ import static projekt.substratum.common.Packages.getLiveOverlayVersion;
 import static projekt.substratum.common.References.BYPASS_SUBSTRATUM_BUILDER_DELETION;
 import static projekt.substratum.common.References.ENABLE_DIRECT_ASSETS_LOGGING;
 import static projekt.substratum.common.References.EXTERNAL_STORAGE_CACHE;
-import static projekt.substratum.common.References.LEGACY_NEXUS_DIR;
-import static projekt.substratum.common.References.PIXEL_NEXUS_DIR;
 import static projekt.substratum.common.References.SUBSTRATUM_BUILDER;
 import static projekt.substratum.common.References.SUBSTRATUM_BUILDER_CACHE;
-import static projekt.substratum.common.References.VENDOR_DIR;
 import static projekt.substratum.common.Resources.SETTINGS;
 import static projekt.substratum.common.Resources.SYSTEMUI;
 import static projekt.substratum.common.commands.FileOperations.DA_LOG;
@@ -409,47 +406,6 @@ public class SubstratumBuilder {
                             "Requesting PackageManager to launch signed overlay APK for " +
                                     "Samsung environment...");
                     noInstall = signedOverlayAPKPath;
-                } else {
-                    // At this point, it is detected to be legacy mode and Substratum will push to
-                    // vendor/overlays directly.
-
-                    FileOperations.mountRW();
-                    // For Non-Nexus devices
-                    if (!Resources.inNexusFilter()) {
-                        String vendorLocation = LEGACY_NEXUS_DIR;
-                        FileOperations.createNewFolder(vendorLocation);
-                        FileOperations.move(context, signedOverlayAPKPath,
-                                vendorLocation + overlayName + ".apk");
-                        FileOperations.setPermissionsRecursively(644, vendorLocation);
-                        FileOperations.setPermissions(755, vendorLocation);
-                        FileOperations.setSystemFileContext(vendorLocation);
-                    } else {
-                        // For Nexus devices
-                        FileOperations.mountRWVendor();
-                        String vendorSymlink = PIXEL_NEXUS_DIR;
-                        FileOperations.createNewFolder(vendorSymlink);
-                        String vendorPartition = VENDOR_DIR;
-                        FileOperations.createNewFolder(vendorPartition);
-                        // On nexus devices, put framework overlay to /vendor/overlay/
-                        if ("android".equals(overlayPackage)) {
-                            String androidOverlay = vendorPartition + overlayName + ".apk";
-                            FileOperations.move(context, signedOverlayAPKPath
-                                    , androidOverlay);
-                        } else {
-                            String overlay = vendorSymlink + overlayName + ".apk";
-                            FileOperations.move(context, signedOverlayAPKPath
-                                    , overlay);
-                            FileOperations.symlink(overlay, vendorPartition);
-                        }
-                        FileOperations.setPermissionsRecursively(644, vendorSymlink);
-                        FileOperations.setPermissionsRecursively(644, vendorPartition);
-                        FileOperations.setPermissions(755, vendorSymlink);
-                        FileOperations.setPermissions(755, vendorPartition);
-                        FileOperations.setSystemFileContext(vendorSymlink);
-                        FileOperations.setSystemFileContext(vendorPartition);
-                        FileOperations.mountROVendor();
-                    }
-                    FileOperations.mountRO();
                 }
             }
         }

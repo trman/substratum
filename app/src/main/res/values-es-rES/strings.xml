@@ -26,8 +26,6 @@
     <string name="refused_to_install_notification_button">Eliminar tema</string>
     <string name="refused_to_install_title_notification">El tematizador rechazó el tema instalado en Samsung.</string>
     <string name="refused_to_install_text_notification">%s falló al instalarse.</string>
-    <string name="failed_to_install_title_notification">Falló la instalación del tema</string>
-    <string name="failed_to_install_text_notification">%s falló al instalarse.</string>
     <string name="actionbar_theme_count_loading">Cargando&#8230;</string>
     <string name="actionbar_search">Buscar</string>
     <string name="actionbar_changelog">Cambios del tema</string>
@@ -37,11 +35,6 @@
     <string name="systemui_qs_tiles">System UI Iconos de Ajustes Rápidos</string>
     <string name="systemui_statusbar">System UI Barra de Estado</string>
     <string name="warning_title">¡ADVERTENCIA!</string>
-    <string name="legacy_warning_content">El modo Legacy se proporciona tal como es, ya que no podemos garantizar por completo
-      la compatibilidad en el sistema. Asegúrese de tener un recovery personalizado para su dispositivo y tener
-      un entendimiento sobre cómo restaurar desde un bootloop antes de continuar.\n\nNo
-      podemos arreglar las cosas que no se están tematizando en este modo, ya que requieren muchos cambios en el
-      sistema.      </string>
     <string name="samsung_warning_content">El soporte de Samsung se proporciona tal como es, ya que no podemos garantizar
      una compatibilidad completa con colores y capas AOSP. Hemos tomado el cuidado de esconder
       las capas peligrosas para su dispositivo, pero puede alternar esto de forma manual en la configuración
@@ -56,14 +49,8 @@
     <string name="new_stock_commits_text">¡Después de la revisión de seguridad de marzo, Google implementó un control en las capas, que ocasiona que se necesite reiniciar para activar una capa instalada/actualizada!</string>
     <string name="new_stock_commits_text_samsung">¡USUARIO DE SAMSUNG! ¡Hemos añadido un par de cosas a las capas recién compiladas que Samsung utiliza para identificar sus capas! ¡Esto significa que necesitará esperar hasta que sus capas están instaladas antes de reiniciar, debido a que Samsung ha añadido retrasos y bloqueos para la detección de las capas en la instalación! ¡Todas las capas SystemUI deben estar habilitadas antes de reiniciar o tendrá que reiniciar nuevamente y hacer todo el proceso otra vez!</string>
     <string name="new_stock_commits_text_pink">Como tal, esta capa estará en rosado y su estado activar/desactivar estará desactivado hasta reiniciar.</string>
-    <string name="legacy_dialog_soft_reboot_title">¡Se requiere reiniciar!</string>
-    <string name="legacy_dialog_soft_reboot_text">Ejecutando sobre el sistema Resource Runtime Overlay,
-      es necesario reiniciar después de agregar o quitar capas.\n\n De continuar con esto
-      el cuadro de diálogo reiniciará automáticamente su dispositivo, así que asegúrese de haber guardado su trabajo
-      antes de continuar.      </string>
     <string name="activity_missing_toast">No se encontraron aplicaciones que pudieran manejar esta
       solicitud, lo siento!      </string>
-    <string name="abort_overlay_toast_success">¡Todas las capas desinstaladas!</string>
     <string name="rescue_toast">Recuperando su sistema&#8230;</string>
     <string name="reboot_awaiting_manager_title">ERROR DE LECTURA DE CAPAS</string>
     <string name="manager_theme_name">Tema: %s</string>
@@ -268,7 +255,6 @@
     <string name="restore">Tarjeta de Restauración</string>
     <string name="restore_card_content">Cuando se carga un perfil, su configuración actual es completamente
       borrada y \"restaurar tema\" asumiría los cambios actualizados.      </string>
-    <string name="remove_dialog_later">Después</string>
     <string name="restore_dialog_okay">Continuar</string>
     <string name="restore_dialog_title">Estas capas se instalarán para restaurar su perfil
       completamente:      </string>
@@ -314,7 +300,6 @@
     <string name="toast_compiled_updated_with_errors">¡Las capas seleccionadas se actualizaron con algunos errores!</string>
     <string name="toast_disabled3">Compile esta capa antes de aplicar!</string>
     <string name="toast_disabled5">Seleccione una capa válida antes de realizar esta acción.</string>
-    <string name="toast_disabled6">Capas seleccionadas eliminadas!</string>
     <string name="no_themes_title">No se encontraron temas&#8230;</string>
     <string name="no_overlays_title">no se han encontrado capas&#8230;</string>
     <string name="no_themes_description">Por favor, instala un tema compatible!</string>
@@ -390,7 +375,6 @@
     <string name="fab_menu_enable">Activar Seleccionados</string>
     <string name="fab_menu_enable_disable">Cambiar estado de capa(s)</string>
     <string name="fab_menu_swap_toggle">Desactivar otros temas</string>
-    <string name="fab_menu_swap_toggle_legacy">Eliminar todas las capas actuales</string>
     <string name="team_title_one">Líderes de Substratum</string>
     <string name="team_text_one">No sólo creamos algo que funcione para los usuarios, sino que trabajamos en conjunto con creadores de temas para que sea un motor de temas maravilloso para la comunidad!</string>
     <string name="team_title_two">Traductores de Substratum</string>

@@ -25,8 +25,6 @@
     <string name="refused_to_install_notification_button">Entferne Theme</string>
     <string name="refused_to_install_title_notification">Themer hat das auf Samsung installierte Theme abgelehnt.</string>
     <string name="refused_to_install_text_notification">%s konnte nicht installiert werden.</string>
-    <string name="failed_to_install_title_notification">Installation des OMS-Themes fehlgeschlagen</string>
-    <string name="failed_to_install_text_notification">%s konnte nicht installiert werden.</string>
     <string name="actionbar_theme_count_loading">Lädt&#8230;</string>
     <string name="actionbar_search">Suche</string>
     <string name="actionbar_changelog">Theme-Änderungsprotokoll</string>
@@ -40,10 +38,7 @@
     <string name="new_stock_commits_title">Neustart erforderlich!</string>
     <string name="new_stock_commits_text">Nach dem März Security-Patch, hat Google eine Überprüfung der Overlays implementiert welche ein Neustart erfordert um ein installiertes/aktualisiertes Overlay zu aktivieren!</string>
     <string name="new_stock_commits_text_pink">Dieses Overlay wird also Pink dargestellt und kann erst nach einem Neustart aktiviert/deaktiviert werden.</string>
-    <string name="legacy_dialog_soft_reboot_title">Neustart erforderlich!</string>
-    <string name="legacy_dialog_soft_reboot_text">Das \"Resource Runtime Overlay\"-System benötigt einen Neustart um Änderungen wie das Hinzufügen oder Ändern von Overlays anwenden zu können.\n\nDas Gerät muss neugestartet werden. Stelle sicher, dass du gerade nicht aktiv an etwas arbeitest, was du noch nicht gespeichert hast bevor du fortfährst.</string>
     <string name="activity_missing_toast">Es wurden keine Anwendungen gefunden, welche diese Anfrage ausführen könnten, sorry!</string>
-    <string name="abort_overlay_toast_success">Alle Overlays deinstalliert!</string>
     <string name="rescue_toast">Rette dein System&#8230;</string>
     <string name="reboot_awaiting_manager_title">LESEN DES OVERLAYS FEHLGESCHLAGEN</string>
     <string name="manager_theme_name">Theme: %s</string>
@@ -229,7 +224,6 @@ eingerichtet&#8230;</string>
     <string name="delete_dialog_text" formatted="false">Bist du dir sicher, dass du \"%s\" löschen willst?</string>
     <string name="restore">Karte wiederherstellen</string>
     <string name="restore_card_content">Wenn ein Profil geladen wird, wird dein aktuelles Setup komplett gelöscht und \"Theme zurücksetzen\" wird die neuen Änderungen übernehmen</string>
-    <string name="remove_dialog_later">Später</string>
     <string name="restore_dialog_okay">Fortsetzen</string>
     <string name="restore_dialog_title">Diese Overlays werden installiert werden, um dein Profil wieder vollständig herzustellen:</string>
     <string name="backup_button">AKTUELLEN ZUSTAND SICHERN</string>
@@ -265,7 +259,6 @@ eingerichtet&#8230;</string>
     <string name="toast_compiled_updated_with_errors">Ausgewählte(s) Overlay(s) mit einigen Fehlern aktualisiert!</string>
     <string name="toast_disabled3">Bitte Overlay vor dem Anwenden erst kompilieren!</string>
     <string name="toast_disabled5">Bitte wähle ein gültiges Overlay aus, bevor du mit dieser Aktion fortfährst.</string>
-    <string name="toast_disabled6">Ausgewählte(s) Overlay(s) entfernt!</string>
     <string name="no_themes_title">Keine Themes gefunden&#8230;</string>
     <string name="no_overlays_title">keine Overlays gefunden&#8230;</string>
     <string name="no_themes_description">Bitte installiere ein kompatibles Theme!</string>
@@ -336,7 +329,6 @@ eingerichtet&#8230;</string>
     <string name="fab_menu_enable">Ausgewählte aktivieren</string>
     <string name="fab_menu_enable_disable">Ändere Overlay-Status</string>
     <string name="fab_menu_swap_toggle">Andere Themes deaktivieren</string>
-    <string name="fab_menu_swap_toggle_legacy">Alle vorhandenen entfernen</string>
     <string name="team_title_one">Chefs bei Substratum</string>
     <string name="team_text_one">Wir erschufen nicht nur etwas, was für die Nutzer funktioniert, sondern wir arbeiteten außerdem mit den Theme-Entwicklern zusammen, um es zu einer wunderbaren Theming-Engine für die Community zu machen!</string>
     <string name="team_title_two">Substratum-Übersetzer</string>

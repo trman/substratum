@@ -9,7 +9,6 @@ package projekt.substratum.common;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Build;
 import dalvik.system.DexClassLoader;
 import projekt.substratum.Substratum;
 
@@ -95,35 +94,11 @@ public class Resources {
             SYSTEMUI_STATUSBARS
     };
 
-    // Predetermined list of new Nexus/Pixel Devices
-    private static final String[] NEXUS_FILTER = {
-            "angler", // Nexus 6P
-            "bullhead", // Nexus 5X
-            "flounder", // Nexus 9
-            "dragon", // Pixel C
-            "marlin", // Pixel
-            "sailfish", // Pixel XL
-            "walleye", // Pixel 2
-            "muskie", // The hidden HTC Pixel 2
-            "taimen", // Pixel 2 XL
-    };
-
-    // Legacy Asset Folder Check
-    private static final String[] ALLOWED_LEGACY_ASSETS = {
-            "overlays",
-            "bootanimation",
-    };
-
     // Do not theme these packages
     private static final String[] BLACKLIST_THEME_TARGET_APPS = {
             "com.android.cts.verifier",
             INTERFACER_PACKAGE
     };
-
-    // This method configures the new devices and their configuration of their vendor folders
-    public static Boolean inNexusFilter() {
-        return Arrays.asList(NEXUS_FILTER).contains(Build.DEVICE);
-    }
 
     // This string array contains all the SystemUI acceptable overlay packs
     public static Boolean allowedSounds(final String current) {
@@ -143,11 +118,6 @@ public class Resources {
     // This string array contains all the framework acceptable overlay packs
     public static Boolean allowedFrameworkOverlay(final String current) {
         return Arrays.asList(ALLOWED_FRAMEWORK_ELEMENTS).contains(current);
-    }
-
-    // This string array contains all the legacy allowed folders
-    public static Boolean allowedForLegacy(final String targetValue) {
-        return Arrays.asList(ALLOWED_LEGACY_ASSETS).contains(targetValue);
     }
 
     // This string array contains all blacklisted app for theme

@@ -46,7 +46,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import projekt.substratum.activities.launch.ShowcaseActivity;
@@ -95,8 +94,6 @@ import static projekt.substratum.common.References.BYPASS_SYSTEM_VERSION_CHECK;
 import static projekt.substratum.common.References.ENABLE_ROOT_CHECK;
 import static projekt.substratum.common.References.EXTERNAL_STORAGE_CACHE;
 import static projekt.substratum.common.References.LOGCHAR_DIR;
-import static projekt.substratum.common.References.NO_THEME_ENGINE;
-import static projekt.substratum.common.References.OVERLAY_MANAGER_SERVICE_N_UNROOTED;
 import static projekt.substratum.common.References.OVERLAY_MANAGER_SERVICE_O_ANDROMEDA;
 import static projekt.substratum.common.References.OVERLAY_MANAGER_SERVICE_O_ROOTED;
 import static projekt.substratum.common.References.OVERLAY_MANAGER_SERVICE_O_UNROOTED;
@@ -174,8 +171,6 @@ public class MainActivity extends AppCompatActivity implements
             switchToStockToolbar(getString(R.string.samsung_oreo_app_name));
         } else if (Systems.isSamsung(context)) {
             switchToStockToolbar(getString(R.string.samsung_app_name));
-        } else if (!Systems.checkOMS(context)) {
-            switchToStockToolbar(getString(R.string.legacy_app_name));
         } else {
             switchToStockToolbar(getString(R.string.nav_main));
         }
@@ -212,8 +207,6 @@ public class MainActivity extends AppCompatActivity implements
             switchToStockToolbar(getString(R.string.samsung_oreo_app_name));
         } else if (Systems.isSamsung(context)) {
             switchToStockToolbar(getString(R.string.samsung_app_name));
-        } else if (!Systems.checkOMS(context)) {
-            switchToStockToolbar(getString(R.string.legacy_app_name));
         } else {
             switchToStockToolbar(getString(R.string.nav_main));
         }
@@ -313,8 +306,6 @@ public class MainActivity extends AppCompatActivity implements
             switchToStockToolbar(getString(R.string.samsung_oreo_app_name));
         } else if (Systems.isSamsung(context)) {
             switchToStockToolbar(getString(R.string.samsung_app_name));
-        } else if (!Systems.checkOMS(context)) {
-            switchToStockToolbar(getString(R.string.legacy_app_name));
         } else {
             switchToStockToolbar(getString(R.string.nav_main));
         }
@@ -883,23 +874,20 @@ public class MainActivity extends AppCompatActivity implements
                                 }
 
                                 if (!Systems.checkOMS(context) &&
-                                        !prefs.contains("legacy_dismissal")) {
-                                    AlertDialog.Builder alert = new AlertDialog.Builder(activity);
-                                    alert.setTitle(R.string.warning_title);
-                                    if (isSamsungDevice(context)) {
-                                        alert.setMessage(R.string.samsung_warning_content);
-                                    } else {
-                                        alert.setMessage(R.string.legacy_warning_content);
-                                    }
-                                    alert.setPositiveButton(R.string.dialog_ok,
-                                            (dialog2, i2) -> dialog2.cancel());
-                                    alert.setNeutralButton(R.string.dialog_do_not_show_again,
-                                            (dialog3, i3) -> {
+                                        !prefs.contains("legacy_dismissal") &&
+                                        isSamsungDevice(context)) {
+                                    new AlertDialog.Builder(activity)
+                                            .setTitle(R.string.warning_title)
+                                            .setMessage(R.string.samsung_warning_content)
+                                            .setPositiveButton(R.string.dialog_ok,
+                                                    (dialog2, i2) -> dialog2.cancel())
+                                            .setNeutralButton(R.string.dialog_do_not_show_again,
+                                                    (dialog3, i3) -> {
                                                 prefs.edit().putBoolean(
                                                         "legacy_dismissal", true).apply();
                                                 dialog3.cancel();
-                                            });
-                                    alert.show();
+                                            })
+                                            .show();
                                 }
 
                                 if (Systems.checkOMS(context) &&
@@ -957,23 +945,20 @@ public class MainActivity extends AppCompatActivity implements
                     }
 
                     if (!Systems.checkOMS(context) &&
-                            !prefs.contains("legacy_dismissal")) {
-                        AlertDialog.Builder alert = new AlertDialog.Builder(activity);
-                        alert.setTitle(R.string.warning_title);
-                        if (isSamsungDevice(context)) {
-                            alert.setMessage(R.string.samsung_warning_content);
-                        } else {
-                            alert.setMessage(R.string.legacy_warning_content);
-                        }
-                        alert.setPositiveButton(R.string.dialog_ok, (dialog2, i2) ->
-                                dialog2.cancel());
-                        alert.setNeutralButton(R.string.dialog_do_not_show_again,
-                                (dialog3, i3) -> {
-                                    prefs.edit().putBoolean(
-                                            "legacy_dismissal", true).apply();
-                                    dialog3.cancel();
-                                });
-                        alert.show();
+                            !prefs.contains("legacy_dismissal") &&
+                            isSamsungDevice(context)) {
+                        new AlertDialog.Builder(activity)
+                                .setTitle(R.string.warning_title)
+                                .setMessage(R.string.samsung_warning_content)
+                                .setPositiveButton(R.string.dialog_ok,
+                                        (dialog2, i2) -> dialog2.cancel())
+                                .setNeutralButton(R.string.dialog_do_not_show_again,
+                                        (dialog3, i3) -> {
+                                            prefs.edit().putBoolean(
+                                                    "legacy_dismissal", true).apply();
+                                            dialog3.cancel();
+                                        })
+                                .show();
                     }
 
                     if (Systems.checkOMS(context) &&
@@ -1178,16 +1163,7 @@ public class MainActivity extends AppCompatActivity implements
                 // Check for OMS
                 boolean omsCheck = Systems.checkOMS(context);
                 if (omsCheck) {
-                    return (themeSystemModule != OVERLAY_MANAGER_SERVICE_O_UNROOTED) &&
-                            (themeSystemModule != OVERLAY_MANAGER_SERVICE_N_UNROOTED) &&
-                            !Root.checkRootAccess();
-                }
-
-                // Check if the system is legacy
-                boolean legacyCheck = themeSystemModule == NO_THEME_ENGINE;
-                if (legacyCheck) {
-                    // Throw the dialog, after checking for root
-                    return !Root.checkRootAccess();
+                    return (themeSystemModule != OVERLAY_MANAGER_SERVICE_O_UNROOTED) && !Root.checkRootAccess();
                 }
             }
             return false;

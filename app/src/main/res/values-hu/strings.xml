@@ -27,8 +27,6 @@
     <string name="refused_to_install_notification_button">Téma eltávolítása</string>
     <string name="refused_to_install_title_notification">A téma készítője letiltotta a Samsungon való telepítést.</string>
     <string name="refused_to_install_text_notification">%s telepítése sikertelen.</string>
-    <string name="failed_to_install_title_notification">OMS téma telepítése sikertelen</string>
-    <string name="failed_to_install_text_notification">%s telepítése sikertelen.</string>
     <string name="actionbar_theme_count_loading">betöltés&#8230;</string>
     <string name="actionbar_search">Keresés</string>
     <string name="actionbar_changelog">Téma változáslista</string>
@@ -38,12 +36,6 @@
     <string name="systemui_qs_tiles">System UI QS Csempe ikonok</string>
     <string name="systemui_statusbar">System UI Állapotsori ikonok</string>
     <string name="warning_title">FIGYELEM!</string>
-    <string name="legacy_warning_content">Legacy úgy működik, ahogy látszik, mivel mi nem tudjuk garantálni
-      a színek teljes kompatibilitását. Győződjön meg arról, hogy egyéni recovery van a készülékén
-      és megértette, hogyan kell visszaállítani a bootloopból, mielőtt folytatná.\n\nMi nem tudjuk
-      kijavítani azokat dolgokat, amelyek nem témázhatóak a Legacy-n, mert teljes rendszerszintű
-      változtatások lennének szükségesek.
-      </string>
     <string name="samsung_warning_content">A Samsung eszközök támogatása olyan, amilyen, mivel nem tudjuk garantálni a
       teljes kompatibilitást a színekkel és az AOSP fedvényekkel. Ennek érdekében elrejtettük
       a készülékére veszélyes fedvényeket, de ezt a beállításokban manuálisan kikapcsolhatja
@@ -59,16 +51,9 @@
     <string name="new_stock_commits_text">A márciusi biztonsági javítás után a Google beépítette a fedvények ellenőrzését, amely újraindítást igényel a telepített/frissített fedvények aktiválásához!</string>
     <string name="new_stock_commits_text_samsung">SAMSUNG FELHASZNÁLÓ! Hozzáadtunk néhány dolgot az újonnan összeállított fedvényekhez, amelyeket a Samsung a fedvények azonosítására használ fel! Ez azt jelenti, hogy meg kell várnia, amíg az fedvényeinek telepítése megkezdődik, mielőtt újraindítaná készülékét, mivel a Samsung új késleltetéseket és blokkolásokat alkalmaz a fedvények felismerésére a telepítéseknél! Minden SystemUI fedvény engedélyezni kell az újraindítás előtt, vagy újraindítás után kezdheti elölről az egész folyamatot!</string>
     <string name="new_stock_commits_text_pink">Mint ilyen, ez a fedvény rózsaszínű lesz, és az engedélyezés/letiltás állapot letiltásra kerül, amíg újraindul.</string>
-    <string name="legacy_dialog_soft_reboot_title">Újraindítás szükséges!</string>
-    <string name="legacy_dialog_soft_reboot_text">Az Erőforrás Futtató Fedvény (RRO) rendszeren való futtatáshoz
-      újraindítás szükséges a fedvények hozzáadása vagy eltávolítása után.\n\nEzen párbeszédpanelről
-      való továbblépés után a készüléke automatikusan újraindul, így kérjük győződjön meg róla, hogy
-      mentette a munkáját, mielőtt továbblépne.
-      </string>
     <string name="activity_missing_toast">Nem található olyan alkalmazás, amely ezt a kérést
       kezeli, sajnáljuk!
       </string>
-    <string name="abort_overlay_toast_success">Minden fedvény eltávolítva!</string>
     <string name="rescue_toast">A rendszer megmentése&#8230;</string>
     <string name="reboot_awaiting_manager_title">FEDVÉNY OLVASÁSI HIBA</string>
     <string name="manager_theme_name">Téma: %s</string>
@@ -286,7 +271,6 @@
     <string name="restore_card_content">Mikor egy profil betöltődik, a jelenlegi beállítása teljesen törlődik
       és a \"téma visszaállítása\" veszi át a frissített változásokat.
       </string>
-    <string name="remove_dialog_later">Később</string>
     <string name="restore_dialog_okay">Folytatás</string>
     <string name="restore_dialog_title">Ezek a fedvények kerülnek telepítésre a profija teljes
       visszaállításához:
@@ -340,7 +324,6 @@
     <string name="toast_compiled_updated_with_errors">Kiválasztott fedvény(ek) bizonyos hibákkal frissítve!</string>
     <string name="toast_disabled3">Kérjük az alkalmazás előtt állítsa össze ezt a fedvényt!</string>
     <string name="toast_disabled5">Kérjük, válasszon egy érvényes fedvényt, mielőtt ezt a műveletet végrehajtaná.</string>
-    <string name="toast_disabled6">Kijelölt fedvény(ek) eltávolítva!</string>
     <string name="no_themes_title">nincsenek témák&#8230;</string>
     <string name="no_overlays_title">fedvények nem találhatóak&#8230;</string>
     <string name="no_themes_description">kérjük telepítsen egy kompatibilis témát!</string>
@@ -416,7 +399,6 @@
     <string name="fab_menu_enable">Kiválasztottak engedélyezése</string>
     <string name="fab_menu_enable_disable">Fedvény állapotok módosítása</string>
     <string name="fab_menu_swap_toggle">Más témák letiltása</string>
-    <string name="fab_menu_swap_toggle_legacy">Összes létező eltávolítása</string>
     <string name="team_title_one">Substratum Vezetői</string>
     <string name="team_text_one">Nem csak létrehoztunk valamit, ami működik a felhasználók számára, hanem szorosan együttműködtünk a témafejlesztőkkel, hogy a Substratum egy csodálatos témakezelési-motorja legyen a közösségnek!</string>
     <string name="team_title_two">Substratum fordítók</string>

@@ -28,7 +28,6 @@ import projekt.substratum.common.References;
 import projekt.substratum.common.Systems;
 import projekt.substratum.common.commands.FileOperations;
 import projekt.substratum.common.platform.SubstratumService;
-import projekt.substratum.common.platform.ThemeInterfacerService;
 import projekt.substratum.common.platform.ThemeManager;
 import projekt.substratum.common.systems.ProfileManager;
 import projekt.substratum.services.binder.AndromedaBinderService;
@@ -219,13 +218,7 @@ public class ScheduledProfileService extends JobService {
                     boolean shouldRestartUi = ThemeManager.shouldRestartUI(context,
                             toBeDisabled)
                             || ThemeManager.shouldRestartUI(context, toBeRun);
-                    if (isBinderInterfacer(context)) {
-                        ThemeInterfacerService.applyProfile(
-                                processed,
-                                new ArrayList<>(system),
-                                toBeRun,
-                                shouldRestartUi);
-                    } else if (checkSubstratumService(context)) {
+                    if (checkSubstratumService(context)) {
                         SubstratumService.applyProfile(
                                 processed,
                                 new ArrayList<>(system),

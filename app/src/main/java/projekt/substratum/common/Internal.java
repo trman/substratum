@@ -140,7 +140,6 @@ public class Internal {
     public static final String BOOTANIMATION_BU_LOCATION = (Systems.IS_PIE && References.checkMagisk()) ? References.MAGISK_MIRROR_MOUNT_POINT + "media/bootanimation-backup.zip" : "/system/media/bootanimation-backup.zip";
     public static final String VALIDATOR_CACHE = "ValidatorCache";
     public static final String VALIDATOR_CACHE_DIR = "/ValidatorCache/";
-    public static final String SYSTEM_ADDON_DIR = "/system/addon.d/";
     public static final String SUBSBOOT_ADDON = "/system/addon.d/81-subsboot.sh";
     public static final String XML_SERIALIZER =
             "http://xmlpull.org/v1/doc/features.html#indent-output";

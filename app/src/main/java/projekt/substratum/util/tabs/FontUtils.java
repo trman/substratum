@@ -12,12 +12,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.Toast;
-import androidx.appcompat.app.AlertDialog;
 import projekt.substratum.R;
 import projekt.substratum.Substratum;
 import projekt.substratum.common.References;
 import projekt.substratum.common.Systems;
-import projekt.substratum.common.commands.ElevatedCommands;
 import projekt.substratum.common.platform.ThemeManager;
 import projekt.substratum.tabs.FontsManager;
 
@@ -112,20 +110,6 @@ public class FontUtils {
                             !Systems.checkThemeInterfacer(context) &&
                             Systems.checkOMS(context)) {
                         ThemeManager.restartSystemUI(context);
-                    } else if (!Systems.checkOMS(context)) {
-                        AlertDialog.Builder alertDialogBuilder =
-                                new AlertDialog.Builder(context);
-                        alertDialogBuilder.setTitle(context.getString(
-                                R.string.legacy_dialog_soft_reboot_title));
-                        alertDialogBuilder.setMessage(context.getString(
-                                R.string.legacy_dialog_soft_reboot_text));
-                        alertDialogBuilder.setPositiveButton(android.R.string.ok,
-                                (dialog, id) -> ElevatedCommands.reboot());
-                        alertDialogBuilder.setNegativeButton(
-                                R.string.remove_dialog_later, (dialog, id) -> dialog.dismiss());
-                        alertDialogBuilder.setCancelable(false);
-                        AlertDialog alertDialog = alertDialogBuilder.create();
-                        alertDialog.show();
                     }
                 }
             }

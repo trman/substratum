@@ -16,11 +16,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-import androidx.appcompat.app.AlertDialog;
 import com.google.android.material.snackbar.Snackbar;
 import projekt.substratum.R;
 import projekt.substratum.Substratum;
-import projekt.substratum.common.commands.ElevatedCommands;
 import projekt.substratum.common.commands.FileOperations;
 import projekt.substratum.common.platform.ThemeManager;
 import projekt.substratum.tabs.BootAnimationsManager;
@@ -42,10 +40,7 @@ import static projekt.substratum.common.Internal.HOME_WALLPAPER;
 import static projekt.substratum.common.Internal.LOCK_WALLPAPER;
 import static projekt.substratum.common.Internal.SOUNDS_APPLIED;
 import static projekt.substratum.common.References.DATA_RESOURCE_DIR;
-import static projekt.substratum.common.References.LEGACY_NEXUS_DIR;
-import static projekt.substratum.common.References.PIXEL_NEXUS_DIR;
 import static projekt.substratum.common.References.SUBSTRATUM_LOG;
-import static projekt.substratum.common.References.VENDOR_DIR;
 import static projekt.substratum.common.References.getPieDir;
 import static projekt.substratum.common.Resources.isBootAnimationSupported;
 import static projekt.substratum.common.Resources.isFontsSupported;
@@ -227,28 +222,6 @@ public class Restore {
                                     "many times, restarting current activity to preserve app " +
                                     "integrity.");
                         }
-                    } else {
-                        if (view != null) {
-                            Lunchbar.make(view,
-                                    context.getString(R.string.abort_overlay_toast_success),
-                                    Snackbar.LENGTH_LONG)
-                                    .show();
-                        }
-                        AlertDialog.Builder alertDialogBuilder =
-                                new AlertDialog.Builder(context);
-                        alertDialogBuilder
-                                .setTitle(context.getString(R.string
-                                        .legacy_dialog_soft_reboot_title));
-
-                        alertDialogBuilder
-                                .setMessage(context.getString(R.string
-                                        .legacy_dialog_soft_reboot_text));
-                        alertDialogBuilder
-                                .setPositiveButton(android.R.string.ok,
-                                        (dialog, id) -> ElevatedCommands.reboot());
-                        alertDialogBuilder.setCancelable(false);
-                        AlertDialog alertDialog = alertDialogBuilder.create();
-                        alertDialog.show();
                     }
                 } else {
                     if (view != null) {
@@ -278,13 +251,8 @@ public class Restore {
                     } else {
                         FileOperations.mountRW();
                         FileOperations.mountRWData();
-                        FileOperations.mountRWVendor();
                         FileOperations.bruteforceDelete(DATA_RESOURCE_DIR);
-                        FileOperations.bruteforceDelete(LEGACY_NEXUS_DIR);
-                        FileOperations.bruteforceDelete(PIXEL_NEXUS_DIR);
-                        FileOperations.bruteforceDelete(VENDOR_DIR);
                         FileOperations.bruteforceDelete(getPieDir() + "_*.apk");
-                        FileOperations.mountROVendor();
                         FileOperations.mountROData();
                         FileOperations.mountRO();
                     }

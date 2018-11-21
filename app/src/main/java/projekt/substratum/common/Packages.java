@@ -29,7 +29,6 @@ import projekt.substratum.Substratum;
 import projekt.substratum.common.analytics.PackageAnalytics;
 import projekt.substratum.common.commands.ElevatedCommands;
 import projekt.substratum.common.platform.SubstratumService;
-import projekt.substratum.common.platform.ThemeInterfacerService;
 import projekt.substratum.util.readers.ReadVariantPrioritizedColor;
 
 import java.io.BufferedReader;
@@ -76,7 +75,6 @@ import static projekt.substratum.common.Resources.allowedSettingsOverlay;
 import static projekt.substratum.common.Resources.allowedSystemUIOverlay;
 import static projekt.substratum.common.Systems.checkOMS;
 import static projekt.substratum.common.Systems.checkSubstratumService;
-import static projekt.substratum.common.Systems.checkThemeInterfacer;
 import static projekt.substratum.common.Systems.isNewSamsungDeviceAndromeda;
 import static projekt.substratum.common.analytics.PackageAnalytics.PACKAGE_TAG;
 
@@ -127,8 +125,8 @@ public class Packages {
      * @param packageName Package name of the desired app to be checked
      * @return True, if available
      */
-    public static boolean isAvailablePackage(Context context,
-                                             String packageName) {
+    static boolean isAvailablePackage(Context context,
+                                      String packageName) {
         PackageManager pm = context.getPackageManager();
         if (isPackageInstalled(context, packageName)) {
             try {
@@ -651,8 +649,6 @@ public class Packages {
         list.add(packageName);
         if (checkSubstratumService(context)) {
             SubstratumService.uninstallOverlay(list, false);
-        } else if (checkThemeInterfacer(context)) {
-            ThemeInterfacerService.uninstallOverlays(list);
         } else {
             ElevatedCommands.runThreadedCommand("pm uninstall " + packageName);
         }

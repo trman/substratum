@@ -13,9 +13,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import projekt.substratum.InformationActivity;
 import projekt.substratum.Substratum;
-import projekt.substratum.common.Packages;
 import projekt.substratum.common.References;
-import projekt.substratum.common.Systems;
 
 import java.io.Serializable;
 import java.util.concurrent.ThreadLocalRandom;
@@ -29,18 +27,13 @@ import static projekt.substratum.common.Internal.THEME_DEBUG;
 import static projekt.substratum.common.Internal.THEME_HASH;
 import static projekt.substratum.common.Internal.THEME_HASHPASSTHROUGH;
 import static projekt.substratum.common.Internal.THEME_LAUNCH_TYPE;
-import static projekt.substratum.common.Internal.THEME_LEGACY;
 import static projekt.substratum.common.Internal.THEME_NAME;
-import static projekt.substratum.common.Internal.THEME_OMS;
 import static projekt.substratum.common.Internal.THEME_PACKAGE;
 import static projekt.substratum.common.Internal.THEME_PID;
 import static projekt.substratum.common.Internal.THEME_PIRACY_CHECK;
 import static projekt.substratum.common.References.SUBSTRATUM_LAUNCHER_CLASS;
 
 public class ThemeLaunchActivity extends Activity {
-
-    private String packageName;
-    private boolean legacyTheme;
 
     /**
      * Launch the theme
@@ -55,7 +48,6 @@ public class ThemeLaunchActivity extends Activity {
      * @param themePiracyCheck Theme piracy check
      * @param encryptionKey    Encryption key
      * @param ivEncryptKey     IV encryption key
-     * @param themeLegacy      Legacy support
      * @return Returns an intent that allows for launching of the theme directly
      */
     private static Intent launchThemeActivity(Context context,
@@ -67,8 +59,7 @@ public class ThemeLaunchActivity extends Activity {
                                               Serializable themeDebug,
                                               Serializable themePiracyCheck,
                                               byte[] encryptionKey,
-                                              byte[] ivEncryptKey,
-                                              Serializable themeLegacy) {
+                                              byte[] ivEncryptKey) {
 
         Intent intent = new Intent(context, InformationActivity.class);
         intent.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -81,7 +72,6 @@ public class ThemeLaunchActivity extends Activity {
         intent.putExtra(THEME_LAUNCH_TYPE, themeLaunchType);
         intent.putExtra(THEME_DEBUG, themeDebug);
         intent.putExtra(THEME_PIRACY_CHECK, themePiracyCheck);
-        intent.putExtra(THEME_LEGACY, themeLegacy);
         intent.putExtra(ENCRYPTION_KEY_EXTRA, encryptionKey);
         intent.putExtra(IV_ENCRYPTION_KEY_EXTRA, ivEncryptKey);
         return intent;
@@ -93,8 +83,7 @@ public class ThemeLaunchActivity extends Activity {
         int intentId = (int) ThreadLocalRandom.current().nextLong(0L, 9999L);
 
         Intent activityExtras = getIntent();
-        packageName = activityExtras.getStringExtra(THEME_PACKAGE);
-        Boolean omsCheck = activityExtras.getBooleanExtra(THEME_OMS, false);
+        String packageName1 = activityExtras.getStringExtra(THEME_PACKAGE);
         Integer hashPassthrough = activityExtras.getIntExtra(THEME_HASHPASSTHROUGH, 0);
         Boolean certified = activityExtras.getBooleanExtra(THEME_CERTIFIED, true);
         String action = activityExtras.getAction();
@@ -104,11 +93,10 @@ public class ThemeLaunchActivity extends Activity {
         Intent myIntent = new Intent();
         myIntent.putExtra(THEME_CERTIFIED, certified);
         myIntent.putExtra(THEME_HASHPASSTHROUGH, hashPassthrough);
-        myIntent.putExtra(THEME_LEGACY, omsCheck);
         myIntent.putExtra(THEME_CALLER, themeCaller);
         myIntent.setAction(action);
         myIntent.setPackage(packageName);
-        myIntent.setClassName(this.packageName, this.packageName + SUBSTRATUM_LAUNCHER_CLASS);
+        myIntent.setClassName(packageName1, packageName1 + SUBSTRATUM_LAUNCHER_CLASS);
 
         try {
             assert action != null;
@@ -116,7 +104,6 @@ public class ThemeLaunchActivity extends Activity {
                     (action.equals(References.TEMPLATE_GET_KEYS) ? 10000 : intentId));
         } catch (Exception e) {
             try {
-                legacyTheme = true;
                 startActivityForResult(myIntent,
                         (action.equals(References.TEMPLATE_GET_KEYS) ? 10000 : intentId));
             } catch (Exception ignored) {
@@ -153,27 +140,10 @@ public class ThemeLaunchActivity extends Activity {
                                 themeDebug,
                                 themePiracyCheck,
                                 encryptionKey,
-                                ivEncryptKey,
-                                Systems.checkOMS(Substratum.getInstance())
+                                ivEncryptKey
                         ));
             }
-        } else if (legacyTheme && (requestCode != 10000)) {
-            startActivity(
-                    launchThemeActivity(
-                            Substratum.getInstance(),
-                            Packages.getPackageName(Substratum.getInstance(), packageName),
-                            null,
-                            packageName,
-                            null,
-                            null,
-                            null,
-                            null,
-                            null,
-                            null,
-                            Systems.checkOMS(Substratum.getInstance())
-                    ));
         }
-        legacyTheme = false;
         finish();
     }
 }

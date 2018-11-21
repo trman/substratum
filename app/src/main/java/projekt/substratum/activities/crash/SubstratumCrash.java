@@ -36,11 +36,9 @@ import java.util.TimerTask;
 
 import static projekt.substratum.common.Internal.SUPPORTED_ROMS_FILE;
 import static projekt.substratum.common.References.NO_THEME_ENGINE;
-import static projekt.substratum.common.References.OVERLAY_MANAGER_SERVICE_N_UNROOTED;
 import static projekt.substratum.common.References.OVERLAY_MANAGER_SERVICE_O_ANDROMEDA;
 import static projekt.substratum.common.References.OVERLAY_MANAGER_SERVICE_O_ROOTED;
 import static projekt.substratum.common.References.OVERLAY_MANAGER_SERVICE_O_UNROOTED;
-import static projekt.substratum.common.References.RUNTIME_RESOURCE_OVERLAY_N_ROOTED;
 import static projekt.substratum.common.References.SAMSUNG_THEME_ENGINE_N;
 import static projekt.substratum.common.Resources.SUBSTRATUM_OVERLAY_FAULT_EXCEPTIONS;
 import static projekt.substratum.common.Resources.SYSTEM_FAULT_EXCEPTIONS;
@@ -204,14 +202,8 @@ public class SubstratumCrash extends Activity {
                     details += "OMS (interfacer)";
                 }
                 break;
-            case OVERLAY_MANAGER_SERVICE_N_UNROOTED:
-                details += "OMS (interfacer)";
-                break;
             case SAMSUNG_THEME_ENGINE_N:
                 details += "RRO (Samsung)";
-                break;
-            case RUNTIME_RESOURCE_OVERLAY_N_ROOTED:
-                details += "RRO (Legacy)";
                 break;
         }
         details += "\n\n";

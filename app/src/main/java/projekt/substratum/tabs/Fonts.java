@@ -29,7 +29,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -37,7 +36,6 @@ import projekt.substratum.R;
 import projekt.substratum.Substratum;
 import projekt.substratum.common.References;
 import projekt.substratum.common.Systems;
-import projekt.substratum.common.commands.ElevatedCommands;
 import projekt.substratum.common.commands.FileOperations;
 import projekt.substratum.databinding.TabFontsBinding;
 import projekt.substratum.util.tabs.FontUtils;
@@ -246,7 +244,7 @@ public class Fonts extends Fragment {
         @Override
         protected void onPreExecute() {
             final Fonts fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) {
+            if (fragment.isAdded()) {
                 final Context context = fragment.context;
                 if (References.ENABLE_EXTRAS_DIALOG) {
                     fragment.progressDialog = new ProgressDialog(context, R.style.RestoreDialog);
@@ -262,7 +260,7 @@ public class Fonts extends Fragment {
         @Override
         protected void onPostExecute(final String result) {
             final Fonts fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) {
+            if (fragment.isAdded()) {
                 final Context context = fragment.context;
                 if (References.ENABLE_EXTRAS_DIALOG) {
                     fragment.progressDialog.dismiss();
@@ -277,23 +275,6 @@ public class Fonts extends Fragment {
                             R.string.manage_fonts_toast,
                             Toast.LENGTH_SHORT);
                     toast.show();
-                } else {
-                    Toast.makeText(
-                            context,
-                            R.string.manage_fonts_toast,
-                            Toast.LENGTH_SHORT)
-                            .show();
-                    final AlertDialog.Builder alertDialogBuilder =
-                            new AlertDialog.Builder(context);
-                    alertDialogBuilder.setTitle(R.string.legacy_dialog_soft_reboot_title);
-                    alertDialogBuilder.setMessage(R.string.legacy_dialog_soft_reboot_text);
-                    alertDialogBuilder.setPositiveButton(android.R.string.ok,
-                            (dialog, id) -> ElevatedCommands.reboot());
-                    alertDialogBuilder.setNegativeButton(R.string.remove_dialog_later,
-                            (dialog, id) -> dialog.dismiss());
-                    alertDialogBuilder.setCancelable(false);
-                    final AlertDialog alertDialog = alertDialogBuilder.create();
-                    alertDialog.show();
                 }
             }
         }
@@ -301,7 +282,7 @@ public class Fonts extends Fragment {
         @Override
         protected String doInBackground(final String... sUrl) {
             final Fonts fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) {
+            if (fragment.isAdded()) {
                 final Context context = fragment.context;
                 FontsManager.clearFonts(context);
             }
@@ -374,12 +355,12 @@ public class Fonts extends Fragment {
                 try {
                     Substratum.log(TAG, "Fonts have been loaded on the drawing panel.");
 
-                    final String work_directory =
+                    final String workDirectory =
                             fonts.context.getCacheDir().getAbsolutePath() + FONT_PREVIEW_CACHE;
 
                     try {
                         final Typeface normalTf = Typeface.createFromFile(
-                                work_directory + NORMAL_FONT);
+                                workDirectory + NORMAL_FONT);
                         fonts.normal.setTypeface(normalTf);
                     } catch (final Exception e) {
                         Log.e(TAG, "Could not load font from directory for normal template." +
@@ -388,7 +369,7 @@ public class Fonts extends Fragment {
 
                     try {
                         final Typeface boldTf = Typeface.createFromFile(
-                                work_directory + BOLD_FONT);
+                                workDirectory + BOLD_FONT);
                         fonts.normalBold.setTypeface(boldTf);
                     } catch (final Exception e) {
                         Log.e(TAG, "Could not load font from directory for normal-bold " +
@@ -397,7 +378,7 @@ public class Fonts extends Fragment {
 
                     try {
                         final Typeface italicsTf = Typeface.createFromFile(
-                                work_directory + ITALICS_FONT);
+                                workDirectory + ITALICS_FONT);
                         fonts.italics.setTypeface(italicsTf);
                     } catch (final Exception e) {
                         Log.e(TAG, "Could not load font from directory for italic template." +
@@ -406,7 +387,7 @@ public class Fonts extends Fragment {
 
                     try {
                         final Typeface italicsBoldTf = Typeface.createFromFile(
-                                work_directory + BOLD_ITALICS_FONT);
+                                workDirectory + BOLD_ITALICS_FONT);
                         fonts.italicsBold.setTypeface(italicsBoldTf);
                     } catch (final Exception e) {
                         Log.e(TAG, "Could not load font from directory for italic-bold " +

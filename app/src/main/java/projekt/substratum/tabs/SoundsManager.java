@@ -9,10 +9,8 @@ package projekt.substratum.tabs;
 
 import android.content.Context;
 import projekt.substratum.common.platform.SubstratumService;
-import projekt.substratum.common.platform.ThemeInterfacerService;
 
 import static projekt.substratum.common.Systems.checkSubstratumService;
-import static projekt.substratum.common.Systems.checkThemeInterfacer;
 
 public class SoundsManager {
 
@@ -32,9 +30,6 @@ public class SoundsManager {
 
         if (checkSubstratumService(context)) {
             SubstratumService.setSounds(themePid, name);
-        } else if (checkThemeInterfacer(context)) {
-            ThemeInterfacerService.setThemedSounds(themePid, name);
-            ringtone = true; // Always assume that the process is succeeded;
         }
         return new boolean[]{false, ringtone};
     }
@@ -53,8 +48,6 @@ public class SoundsManager {
         // entry is removed.
         if (checkSubstratumService(context)) {
             SubstratumService.clearSounds();
-        } else if (checkThemeInterfacer(context)) {
-            ThemeInterfacerService.clearThemedSounds();
         }
     }
 }

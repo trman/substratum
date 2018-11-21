@@ -27,8 +27,6 @@
     <string name="refused_to_install_notification_button">Премахни тема</string>
     <string name="refused_to_install_title_notification">Темата не поддържа Samsung.</string>
     <string name="refused_to_install_text_notification">Инсталирането на %s е неуспешно.</string>
-    <string name="failed_to_install_title_notification">Грешка в инсталирането на OMS тема</string>
-    <string name="failed_to_install_text_notification">Инсталирането на %s е неуспешно.</string>
     <string name="actionbar_theme_count_loading">зареждане&#8230;</string>
     <string name="actionbar_search">Търси</string>
     <string name="actionbar_changelog">Изменения на темата</string>
@@ -45,16 +43,9 @@
       темата ни във XDA форума, за да видите двата начина за възстановяване.
       </string>
     <string name="new_stock_commits_title">Необходимо е рестартиране!</string>
-    <string name="legacy_dialog_soft_reboot_title">Необходимо е рестартиране!</string>
-    <string name="legacy_dialog_soft_reboot_text">Работейки върху Resource Runtime Overlay системата, е
-      задължително да се рестартира устройството след добавяне или премахване на слоеве.\n\n
-      Продължаването с този диалог ще го рестартира автоматично, затова се уверете, че сте
-      запазили работата си, преди да продължите.
-      </string>
     <string name="activity_missing_toast">Не бяха намерени приложения, които могат да
       извършат заявката ви!
       </string>
-    <string name="abort_overlay_toast_success">Всички пластове са деинсталирани!</string>
     <string name="rescue_toast">Спасяване на системата&#8230;</string>
     <string name="reboot_awaiting_manager_title">ГРРЕШКА ПРИ РАЗЧИТАНЕТО НА ЕЛЕМАНТА ОТ ТЕМАТА</string>
     <string name="manager_theme_name">Тема: %s</string>
@@ -230,7 +221,6 @@
     <string name="delete_dialog_title">Изтриване на профил</string>
     <string name="delete_dialog_text" formatted="false">Сигурни ли сте, че искате да изтриете \"%s\"?</string>
     <string name="restore">Карта за възтановяване</string>
-    <string name="remove_dialog_later">По-късно</string>
     <string name="restore_dialog_okay">Продължете</string>
     <string name="backup_button">ЗАПАЗВАНЕ НА ТЕКУЩИЯ СТАТУС</string>
     <string name="restore_button">ВЪЗСТАНОВЯВАНЕ НА ПРОФИЛ</string>
@@ -252,7 +242,6 @@
     <string name="toast_compiled_updated_with_errors">Избраните пластове са обновени с някои грешки!</string>
     <string name="toast_disabled3">Моля, компилирайте този пласт преди да го приложите!</string>
     <string name="toast_disabled5">Моля, изберете валиден пласт преди да извършите това действие.</string>
-    <string name="toast_disabled6">Избраните пластове са премахнати!</string>
     <string name="no_themes_title">няма открити теми&#8230;</string>
     <string name="no_overlays_title">няма намерени слоеве&#8230;</string>
     <string name="no_themes_description">моля, инсталирайте съвместима тема!</string>
@@ -313,7 +302,6 @@
     <string name="fab_menu_enable">Активиране на избраното</string>
     <string name="fab_menu_enable_disable">Промяна на статус на слой</string>
     <string name="fab_menu_swap_toggle">Деактивиране на други теми</string>
-    <string name="fab_menu_swap_toggle_legacy">Премахване на всичко приложено</string>
     <string name="team_title_one">Лидерите на Substratum</string>
     <string name="team_text_one">Не само създадохме нещо, което работи за потребители, но ние работихме заедно с програмисти, за да го направию един прекрасен двигател за общността!</string>
     <string name="team_title_two">Преводачи на Substratum</string>

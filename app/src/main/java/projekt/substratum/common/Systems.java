@@ -43,12 +43,10 @@ import static projekt.substratum.common.References.ANDROMEDA_PACKAGE;
 import static projekt.substratum.common.References.BYPASS_SYSTEM_VERSION_CHECK;
 import static projekt.substratum.common.References.INTERFACER_PACKAGE;
 import static projekt.substratum.common.References.NO_THEME_ENGINE;
-import static projekt.substratum.common.References.OVERLAY_MANAGER_SERVICE_N_UNROOTED;
 import static projekt.substratum.common.References.OVERLAY_MANAGER_SERVICE_O_ANDROMEDA;
 import static projekt.substratum.common.References.OVERLAY_MANAGER_SERVICE_O_ROOTED;
 import static projekt.substratum.common.References.OVERLAY_MANAGER_SERVICE_O_UNROOTED;
 import static projekt.substratum.common.References.PLAY_STORE_PACKAGE_NAME;
-import static projekt.substratum.common.References.RUNTIME_RESOURCE_OVERLAY_N_ROOTED;
 import static projekt.substratum.common.References.SAMSUNG_THEME_ENGINE_N;
 import static projekt.substratum.common.References.SST_ADDON_PACKAGE;
 import static projekt.substratum.common.References.SUBSTRATUM_LOG;
@@ -63,7 +61,7 @@ public class Systems {
     public static final boolean IS_PIE = Build.VERSION.SDK_INT == Build.VERSION_CODES.P;
     public static final boolean IS_OREO = Build.VERSION.SDK_INT == Build.VERSION_CODES.O ||
             Build.VERSION.SDK_INT == Build.VERSION_CODES.O_MR1;
-    public static final boolean IS_NOUGAT = Build.VERSION.SDK_INT == Build.VERSION_CODES.N ||
+    private static final boolean IS_NOUGAT = Build.VERSION.SDK_INT == Build.VERSION_CODES.N ||
             Build.VERSION.SDK_INT == Build.VERSION_CODES.N_MR1;
 
     private static Boolean checkPackageSupported;
@@ -179,27 +177,13 @@ public class Systems {
                     return OVERLAY_MANAGER_SERVICE_O_ROOTED;
                 }
             } else if (IS_NOUGAT) {
-                if (isBinderInterfacer(context)) {
-                    // Interfacer mode
-                    prefs.edit().putInt(
-                            "current_theme_mode",
-                            OVERLAY_MANAGER_SERVICE_N_UNROOTED
-                    ).apply();
-                    return OVERLAY_MANAGER_SERVICE_N_UNROOTED;
-                } else if (isSamsungDevice(context)) {
+                if (isSamsungDevice(context)) {
                     // Sungstratum mode
                     prefs.edit().putInt(
                             "current_theme_mode",
                             SAMSUNG_THEME_ENGINE_N
                     ).apply();
                     return SAMSUNG_THEME_ENGINE_N;
-                } else if (Root.checkRootAccess()) {
-                    // Rooted mode
-                    prefs.edit().putInt(
-                            "current_theme_mode",
-                            RUNTIME_RESOURCE_OVERLAY_N_ROOTED
-                    ).apply();
-                    return RUNTIME_RESOURCE_OVERLAY_N_ROOTED;
                 }
             }
         }

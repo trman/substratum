@@ -25,8 +25,6 @@
     <string name="refused_to_install_notification_button">Odstrániť tému</string>
     <string name="refused_to_install_title_notification">Autor témy zakázal inštaláciu témy na Samsungu.</string>
     <string name="refused_to_install_text_notification">%s sa nepodarilo nainštalovať.</string>
-    <string name="failed_to_install_title_notification">Nepodarilo sa nainštalovať OMS tému</string>
-    <string name="failed_to_install_text_notification">%s sa nepodarilo nainštalovať.</string>
     <string name="actionbar_theme_count_loading">načítavanie&#8230;</string>
     <string name="actionbar_search">Hľadať</string>
     <string name="actionbar_changelog">Zoznam zmien v téme</string>
@@ -36,18 +34,14 @@
     <string name="systemui_qs_tiles">Ikony rychlých prepínačov</string>
     <string name="systemui_statusbar">Ikony na stavovom riadku</string>
     <string name="warning_title">UPOZORNENIE!</string>
-    <string name="legacy_warning_content">Staré systémy sú podporované tak ako-sú, nemôžeme zaručiť plnú kompatibilitu s farbami. Pred pokračovaním si skontrolujte, či máte vo vašom zariadení TWRP recovery a rozumiete ako obnoviť systém, ak náhodou skončíte v spúšťacej slučke  (bootloope).\n\nNa starých systémoch, ktoré nepodporujú zmenu tém, nemôžeme garantovať funkčnosť. Tieto systémy vyžadujú zmeny na strane ich systému.       </string>
     <string name="samsung_warning_content">Samsung podpora je poskytovaná tak, ako-je, pretože nemôžeme zaručiť plnú kompatibilitu s farbami a prekrytiami na báze AOSP. Postarali sme sa o skrytie nebezpečných prekrytí pre vaše zariadenie, podľa vlastného uváženia môžete túto možnosť ručne vypnúť v nastaveniach.\n\nV každom prípade, ak narazíte na problém s čiernou obrazovkou, prečítajte si naše vlákno XDA o dvoch spôsoboch obnovenia.   </string>
     <string name="xiaomi_warning_content">Spoločnosť Xiaomi podnikla ďalšie kroky, aby zabránila Substratum fungovať.\n\nV Nastaveniach pre vývojárov musíte povoliť možnosti: \"Inštalovať cez USB\", \"Ladenie USB (Nastavenia zabezpečenia)\" ako aj zvyčajné \"Ladenie USB\".\n\ nBez týchto oprávnení by sa prekrytia nenainštalovali!</string>
     <string name="new_stock_commits_title">Vyžaduje sa reštart!</string>
     <string name="new_stock_commits_text">Po marcovej bezpečnostnej záplate spoločnosť Google implementovala kontrolu prekrytí, ktorá potrebuje reštart pre aktiváciu nainštalovaného/aktualizovaného prekrytia!</string>
     <string name="new_stock_commits_text_samsung">SAMSUNG používateľ! K novým skompilovaným prekrytiam sme pridali niekoľko vecí, ktoré spoločnosť Samsung používa na identifikáciu ich prekrytí. To znamená, že budete musieť počkať, kým sa vaše prekrytia nainštalujú pred reštartom, pretože spoločnosť Samsung pridala oneskorenia a bloky na detekciu prekrytia pri inštaláciách! Všetky prekrytia systému SystemUI musia byť zapnuté pred reštartovaním, alebo budete musieť reštartovať a znova vykonať celý proces!</string>
     <string name="new_stock_commits_text_pink">Ako také, bude toto prekrytie v ružovej farbe a zobrazenie stavu zapnutia/vypnutia bude zakázané až do reštartu.</string>
-    <string name="legacy_dialog_soft_reboot_title">Vyžaduje sa reštart!</string>
-    <string name="legacy_dialog_soft_reboot_text">Systém funguje na princípe real-time prekrývania zdrojov, po pridaní alebo odobraní prekrytí je potrebné  reštartovať systém.\n\nPokračovaním v tomto dialógu sa vaše zariadenie automaticky reštartuje, tak si prosím pred pokračovaním uložte vašu prácu.</string>
     <string name="activity_missing_toast">Prepáčte, ale neboli nájdené žiadne aplikácie, ktoré by mohli zvládnuť túto požiadavku.
       </string>
-    <string name="abort_overlay_toast_success">Všetky prekrytia boli odinštalované!</string>
     <string name="rescue_toast">Záchrana systému&#8230;</string>
     <string name="reboot_awaiting_manager_title">CHYBA PRI ČÍTANÍ PREKRYTIA</string>
     <string name="manager_theme_name">Téma: %s</string>
@@ -237,7 +231,6 @@
     <string name="restore">Obnoviť kartu</string>
     <string name="restore_card_content">Keď je profil načítaný, je vaše aktuálne nastavenie kompletne vymazané a \"obnovená téma\"  aktualizuje všetky nastavenia.
       </string>
-    <string name="remove_dialog_later">Neskôr</string>
     <string name="restore_dialog_okay">Pokračovať</string>
     <string name="restore_dialog_title">Tieto prekrytia sa nainštalujú pre kompletné obnovenie vášho profilu:</string>
     <string name="backup_button">ZÁLOHOVANIE AKTUÁLNEHO STAVU</string>
@@ -276,7 +269,6 @@
     <string name="toast_compiled_updated_with_errors">Vybrané prekrytia sa aktualizovali s nejakými chybami!</string>
     <string name="toast_disabled3">Prosím, skompilujte toto prekrytie pred aplikovaním!</string>
     <string name="toast_disabled5">Prosím, pred vykonaním tejto akcie, vyberte platné prekrytie.</string>
-    <string name="toast_disabled6">Vybrané prekrytia boli odstránené!</string>
     <string name="no_themes_title">nenašli sa žiadne témy&#8230;</string>
     <string name="no_overlays_title">nenašli sa žiadne prekrytia&#8230;</string>
     <string name="no_themes_description">prosím, nainštalujte kompatibilnú tému!</string>
@@ -349,7 +341,6 @@
     <string name="fab_menu_enable">Povoliť označené</string>
     <string name="fab_menu_enable_disable">Zmena stavu prekrytí</string>
     <string name="fab_menu_swap_toggle">Zakázať iné témy</string>
-    <string name="fab_menu_swap_toggle_legacy">Odstrániť všetky existujúce</string>
     <string name="team_title_one">Vodcovia Substratum</string>
     <string name="team_text_one">Nielen, že sme vytvorili niečo, čo funguje pre používateľov, ale spolupracujeme aj s tvorcami tém, aby sme vytvorili výborného správcu tém pre komunitu!</string>
     <string name="team_title_two">Prekladatelia Substratum</string>

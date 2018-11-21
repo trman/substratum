@@ -27,8 +27,6 @@
     <string name="refused_to_install_notification_button">Xoá chủ đề</string>
     <string name="refused_to_install_title_notification">Loại bỏ chủ đề đã được cài đặt trên Samsung.</string>
     <string name="refused_to_install_text_notification">%s không được cài đặt.</string>
-    <string name="failed_to_install_title_notification">Không thể cài đặt chủ đề OMS</string>
-    <string name="failed_to_install_text_notification">%s không được cài đặt.</string>
     <string name="actionbar_theme_count_loading">đang tải&#8230;</string>
     <string name="actionbar_search">Tìm kiếm</string>
     <string name="actionbar_changelog">Các thay đổi của chủ đề</string>
@@ -38,9 +36,6 @@
     <string name="systemui_qs_tiles">Biểu tượng Ô Cài đặt nhanh</string>
     <string name="systemui_statusbar">Biểu tượng Thanh trạng thái</string>
     <string name="warning_title">CẢNH BÁO!</string>
-    <string name="legacy_warning_content">Legacy được cung cấp theo yêu cầu vì chúng tôi không thể đảm bảo đầy đủ
-      tương thích với màu sắc. Hãy đảm bảo bạn có khôi phục tùy chỉnh cho thiết bị của mình và có
-      một sự hiểu biết về cách khôi phục từ một.      </string>
     <string name="samsung_warning_content">Hỗ trợ của Samsung được cung cấp theo như chúng tôi không thể đảm bảo
       tương thích đầy đủ với màu sắc và lớp phủ AOSP. Chúng tôi đã quan tâm đến việc trốn tránh
       lớp phủ nguy hiểm cho thiết bị của bạn, bu.      </string>
@@ -50,14 +45,9 @@
     <string name="new_stock_commits_text">Sau bản vá bảo mật tháng Ba, Google đã tiến hành kiểm tra trên các lớp phủ mà không cần khởi động lại để kích hoạt một lớp phủ đã cài đặt/nâng cấp!</string>
     <string name="new_stock_commits_text_samsung">NGƯỜI DÙNG SAMSUNG! Chúng tôi đã thêm một số điều để làm mới lớp phủ biên dịch vừa được Samsung sử dụng để xác định các lớp phủ của họ! Điều này có nghĩa là bạn cần phải đợi chờ đến khi lớp phủ của bạn đã được cài đặt trước khi tiến hành khởi động lại như Samsung đã thêm độ trễ và các khối cho phát hiện lớp phủ đang cài đặt! Tất cả lớp phủ System UI phải được kích hoạt trước khi khởi động lại hoặc bạn sẽ cần khởi động lại và thực hiện lại toàn bộ quá trình!</string>
     <string name="new_stock_commits_text_pink">Như vậy, lớp phủ này sẽ trở nên hồng và trạng thái kích hoạt/vô hiệu sẽ bị vô hiệu hoá cho đến khi khởi động lại.</string>
-    <string name="legacy_dialog_soft_reboot_title">Yêu cầu khởi động lại!</string>
-    <string name="legacy_dialog_soft_reboot_text">Đang chạy trên hệ thống Lớp phủ Thời gian chạy Tài nguyên,
-      được yêu cầu thực hiện khởi động lại sau khi thêm hoặc xóa các lớp phủ. \ n \ nKhả năng này
-      sẽ tự động khởi động lại thiết bị của bạn,.      </string>
     <string name="activity_missing_toast">Không tìm thấy ứng dụng nào có thể xử lý được
       yêu cầu, xin lỗi!
       </string>
-    <string name="abort_overlay_toast_success">Tất cả các lớp phủ gỡ bỏ cài đặt!</string>
     <string name="rescue_toast">Đang giải cứu hệ thống của bạn&#8230;</string>
     <string name="reboot_awaiting_manager_title">LỖI ĐỌC LỚP PHỦ</string>
     <string name="manager_theme_name">Giáo diện: %s</string>
@@ -263,7 +253,6 @@
     <string name="delete_dialog_text" formatted="false">Bạn có chắc bạn muốn xóa bỏ \"%s\"?</string>
     <string name="restore">Khôi phục thẻ</string>
     <string name="restore_card_content">Khi cấu hình được tải, thiết lập hiện tại của bạn hoàn toàn bị xóa và \"khôi phục chủ đề\" sẽ mang về những thay đổi Cập Nhật.      </string>
-    <string name="remove_dialog_later">Để sau</string>
     <string name="restore_dialog_okay">Tiếp tục</string>
     <string name="restore_dialog_title">Lớp phủ này sẽ được cài đặt để khôi phục lại tiểu sử của bạn hoàn toàn:      </string>
     <string name="backup_button">BACKUP NGUỒN HIỆN TẠI</string>
@@ -307,7 +296,6 @@
     <string name="toast_compiled_updated_with_errors">Lớp phủ được chọn cập nhật với một số lỗi!</string>
     <string name="toast_disabled3">Hãy biên dịch lớp phủ này trước khi áp dụng!</string>
     <string name="toast_disabled5">Vui lòng chọn một lớp phủ hợp lệ trước khi thực hiện hành động này.</string>
-    <string name="toast_disabled6">Overlay(s) lựa chọn gỡ bỏ!</string>
     <string name="no_themes_title">không có chủ đề tìm thấy&#8230;</string>
     <string name="no_overlays_title">không có lớp phủ tìm thấy&#8230;</string>
     <string name="no_themes_description">hãy cài đặt một chủ đề tương thích!</string>
@@ -381,7 +369,6 @@
     <string name="fab_menu_enable">Cho phép lựa chọn</string>
     <string name="fab_menu_enable_disable">Thay đổi lớp phủ kỳ</string>
     <string name="fab_menu_swap_toggle">Vô hiệu hoá các chủ đề khác</string>
-    <string name="fab_menu_swap_toggle_legacy">Loại bỏ tất cả hiện tại</string>
     <string name="team_title_one">Nhà lãnh đạo của Substratum</string>
     <string name="team_text_one">Không chỉ chúng tôi đã tạo ra một cái gì đó mà làm việc cho người sử dụng, nhưng chúng tôi đã làm việc cùng với themers để làm cho nó một công cụ tuyệt vời theming cho cộng đồng!</string>
     <string name="team_title_two">Dịch thuật viên Substratum</string>

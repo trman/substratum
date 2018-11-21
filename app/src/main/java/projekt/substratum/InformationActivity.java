@@ -557,18 +557,7 @@ public class InformationActivity extends AppCompatActivity {
             Context otherContext = context.createPackageContext
                     (themePid, 0);
             AssetManager am = otherContext.getAssets();
-            String[] foundFolders = am.list("");
-            tabChecker = new ArrayList<>();
-            if (!Systems.checkOMS(context)) {
-                for (String foundFolder : foundFolders) {
-                    if (Resources.allowedForLegacy
-                            (foundFolder)) {
-                        tabChecker.add(foundFolder);
-                    }
-                }
-            } else {
-                tabChecker = Arrays.asList(am.list(""));
-            }
+            tabChecker = Arrays.asList(am.list(""));
             boolean isWallpaperOnly = true;
             if (tabChecker.contains(overlaysFolder)) {
                 isWallpaperOnly = false;
@@ -771,9 +760,7 @@ public class InformationActivity extends AppCompatActivity {
 
         // This is for the Floating Action Menu actions
         Intent intent = new Intent("Overlays" + START_JOB_ACTION);
-        if (!Systems.checkOMS(this) && !Systems.isSamsungDevice(context)) {
-            enableSwap.setText(getString(R.string.fab_menu_swap_toggle_legacy));
-        } else if (Systems.isSamsung(context)) {
+        if (Systems.isSamsung(context)) {
             fabMenuDivider.setVisibility(View.GONE);
             enableSwap.setVisibility(View.GONE);
         }

@@ -25,8 +25,6 @@
     <string name="refused_to_install_notification_button">Odstranit motiv</string>
     <string name="refused_to_install_title_notification">Autor motivu zamítl motiv nainstalovaný na Samsung.</string>
     <string name="refused_to_install_text_notification">%s se nepodařilo nainstalovat.</string>
-    <string name="failed_to_install_title_notification">Nepodařilo se instalovat OMS motiv</string>
-    <string name="failed_to_install_text_notification">%s se nepodařilo nainstalovat.</string>
     <string name="actionbar_theme_count_loading">načítaní&#8230;</string>
     <string name="actionbar_search">Hledat</string>
     <string name="actionbar_changelog">Seznam změn motivu</string>
@@ -36,8 +34,6 @@
     <string name="systemui_qs_tiles">Ikony rychlých přepínačů</string>
     <string name="systemui_statusbar">Ikony na stavové liště</string>
     <string name="warning_title">VAROVÁNÍ!</string>
-    <string name="legacy_warning_content">Legacy je dáno tak jak je a nemůžeme garantovat plnou podporu barev. Prosím přesvědčte se že máte custom recovery a víte jakpoužít záchranný/obnovovací zip.
-\n\nNemůžeme aplikovat motiv na vše protože k tomu potřebujeme změny v systému.      </string>
     <string name="samsung_warning_content">Samsung podpora je poskytována tak, jak je, protože nemůžeme zaručit plnou kompatibilitu s barvami a překrytím na bázi AOSP.
   Postarali jsme se o skrytí nebezpečných potahů pro vaše zařízení, podle vlastního uvážení můžete tuto možnost ručně vypnout v nastavení.\n\nPokud narazíte na problém s černou obrazovkou, přečtěte si naše vlákno XDA o dvou způsobech obnovení.      </string>
     <string name="xiaomi_warning_content">Společnost Xiaomi podnikla další kroky, aby zabránila Substratum fungovat.\n\nV nastavení pro vývojáře musíte povolit možnosti: \"Instalovat přes USB\" a \"Ladění USB (Nastavení zabezpečení)\" jakož i obvyklé \"Ladění USB\".\n\nBez těchto oprávnění nebudou potahy nainstalovány!      </string>
@@ -45,15 +41,8 @@
     <string name="new_stock_commits_text">Po březnové bezpečnostní záplatě, Google implementoval kontrolu potahů, která vyžaduje restart pro aktivaci nainstalovaných/aktualizovaných potahů!</string>
     <string name="new_stock_commits_text_samsung">UŽIVATEL SAMSUNG! K novým zkompilovaný potahům jsme přidali několik věcí, které Samsung používá k jejich identifikaci. To znamená, že budete muset počkat, dokud se vaše potahy nainstalují před restartováním, protože Samsung přidal zpoždění a blokování pro detekci potahů při instalacích! Všechny potahy SystemUI musí být zapnuty před restartováním, jinak budete muset restartovat a znovu provést celý proces!</string>
     <string name="new_stock_commits_text_pink">Jako takové, budou tyto potahy v růžové barvě a zobrazení stavu zapnutí/vypnutí bude zakázáno až do restartování.</string>
-    <string name="legacy_dialog_soft_reboot_title">Je potřeba restartovat!</string>
-    <string name="legacy_dialog_soft_reboot_text">Běží na prostředkovém potahovém systému, je
-        potřebné po přidání nebo odebrání potahů restartovat systém.\n\nPokračování s tímto
-        dialogem automaticky restartuje vaš zařízení, takže si prosím uložte vaši práci
-        před pokračováním.
-      </string>
     <string name="activity_missing_toast">Promiňte, ale nebyly nalezeny žádné aplikace, které by mohl zvládnout tuto žádost!
       </string>
-    <string name="abort_overlay_toast_success">Všechny potahy odinstalovány!</string>
     <string name="rescue_toast">Záchrana systému&#8230;</string>
     <string name="reboot_awaiting_manager_title">CHYBA PŘI ČTENÍ POTAHU</string>
     <string name="manager_theme_name">Motiv: %s</string>
@@ -250,7 +239,6 @@ nižší prioritou.      </string>
     <string name="restore">Obnovit kartu</string>
     <string name="restore_card_content">Když je profil načtený, je vaše aktuální nastavení kompletně vymazáno a \"obnovený motiv\" aktualizuje všechna nastavení.
       </string>
-    <string name="remove_dialog_later">Později</string>
     <string name="restore_dialog_okay">Pokračovat</string>
     <string name="restore_dialog_title">Tyto potahy se nainstalují a kompletně obnoví váš profil:      </string>
     <string name="backup_button">ZÁLOHOVÁNÍ AKTUÁLNÍHO STAVU</string>
@@ -292,7 +280,6 @@ nižší prioritou.      </string>
  chybami!</string>
     <string name="toast_disabled3">Prosím, zkompilujte tento potah před použitím!</string>
     <string name="toast_disabled5">Prosím, vyberte správný potah před provedením této akce.</string>
-    <string name="toast_disabled6">Vybrané potahy jsou odstraněny!</string>
     <string name="no_themes_title">nenalezeny žádné motivy&#8230;</string>
     <string name="no_overlays_title">nenalezeny žádné potahy&#8230;</string>
     <string name="no_themes_description">prosím, nainstalujte kompatibilní motiv!</string>
@@ -369,7 +356,6 @@ nižší prioritou.      </string>
     <string name="fab_menu_enable">Povolit vybrané</string>
     <string name="fab_menu_enable_disable">Změna stavu potahů</string>
     <string name="fab_menu_swap_toggle">Zakázat další motivy</string>
-    <string name="fab_menu_swap_toggle_legacy">Odstranit všechny existující</string>
     <string name="team_title_one">Leaders of Substratum</string>
     <string name="team_text_one">Nejenže jsme vytvořily něco co funguje pro uživatele, ale také jsme spolupracovali s tvůrci motivů, aby jsme vytvořily úžasný program na vytváření motivů pro komunitu!</string>
     <string name="team_title_two">Překladatelé Substratum</string>

@@ -26,8 +26,6 @@
     <string name="refused_to_install_notification_button">Usuń motyw</string>
     <string name="refused_to_install_title_notification">Twórca motywu odrzucił motyw zainstalowany na urządzeniu Samsung.</string>
     <string name="refused_to_install_text_notification">%s nie udało się zainstalować.</string>
-    <string name="failed_to_install_title_notification">Błąd instalacji motywu OMS</string>
-    <string name="failed_to_install_text_notification">%s nie udało się zainstalować.</string>
     <string name="actionbar_theme_count_loading">ładowanie&#8230;</string>
     <string name="actionbar_search">Szukaj</string>
     <string name="actionbar_changelog">Lista zmian motywu</string>
@@ -37,7 +35,6 @@
     <string name="systemui_qs_tiles">Ikony Szybkich Ustawień</string>
     <string name="systemui_statusbar">Ikony Paska Stanu</string>
     <string name="warning_title">UWAGA!</string>
-    <string name="legacy_warning_content">Legacy jest dostarczane jak-jest, jako że nie możemy zagwarantować pełnej zgodności z kolorami. Upewnij się, że masz niestandardowe recovery w swoim urządzeniu  i wiesz, jak wyratować się z tzw. bootloopa przed przystąpieniem do dalszych kroków. \n\nNie możemy naprawić rzeczy, które nie są zmieniane przez motyw, ponieważ wymagają one zmiany po stronie systemu.      </string>
     <string name="samsung_warning_content">Wsparcie dla Samsunga dostarczone jest jak-jest, jako że nie możemy zagwarantować pełnej zgodności z kolorami i nakładkami zbudowanymi dla AOSP. Zatroszczyliśmy się o ukrycie niebezpiecznych nakładek dla Twojego urządzenia, ale możesz przełączać to ręcznie w ustawieniach według własnego uznania.\n\nJeżeli wystąpi u Ciebie problem z czarnym ekranem, zapoznaj się z naszym wątkiem na XDA na temat dwóch metod odzyskiwania.      </string>
     <string name="xiaomi_warning_content">Xiaomi podjęło dodatkowe kroki, aby zabezpieczyć się przed działaniem
 Substratum. \n\nMusisz mieć włączone w Opcjach programistycznych \"Instaluj przez USB\" i \"Debugowanie USB (Ustawienia bezpieczeństwa)\",  jak również zwykłe \"Debugowanie USB\".\ \n\nBez tych uprawnień nakładki nie zostaną zainstalowane!      </string>
@@ -45,10 +42,7 @@ Substratum. \n\nMusisz mieć włączone w Opcjach programistycznych \"Instaluj p
     <string name="new_stock_commits_text">Po marcowej poprawce bezpieczeństwa Google zaimplementował kontrolę nad nakładkami, które wymagają ponownego uruchomienia, aby aktywować zainstalowaną / zaktualizowaną nakładkę!</string>
     <string name="new_stock_commits_text_samsung">UŻYTKOWNICY SAMSUNGA! Dodaliśmy kilka rzeczy do nowo skompilowanych nakładek, które Samsung wykorzystuje do identyfikacji swoich nakładek! Oznacza to, że przed ponownym uruchomieniem może być konieczne poczekanie na zainstalowanie nakładek, ponieważ firma Samsung dodała opóźnienia i blokuje wykrywanie nakładki podczas instalacji! Wszystkie nakładki interfejsu muszą być włączone przed ponownym uruchomieniem urządzenia inaczej konieczne będzie ponowne uruchomienie i powtórzenie całego procesu!</string>
     <string name="new_stock_commits_text_pink">W związku z tym nakładka będzie różowa, a stan włączania / wyłączania będzie wyłączony do czasu ponownego uruchomienia.</string>
-    <string name="legacy_dialog_soft_reboot_title">Wymagane ponowne uruchomienie!</string>
-    <string name="legacy_dialog_soft_reboot_text">Działając na Resource Runtime Overlay system, wymagane jest wykonanie ponownego uruchomienia po dodaniu lub usunięciu nakładek.\n\n Kontynuowanie spowoduje automatyczne zrestartowanie urządzenia, dlatego prosimy wcześniej zapisać swoją pracę.      </string>
     <string name="activity_missing_toast">Nie znaleziono żadnych aplikacji które mogłyby to obsłużyć, przepraszamy!      </string>
-    <string name="abort_overlay_toast_success">Wszystkie nakładki odinstalowane!</string>
     <string name="rescue_toast">Ratowanie systemu&#8230;</string>
     <string name="reboot_awaiting_manager_title">BŁĄD CZYTANIA NAKŁADKI</string>
     <string name="manager_theme_name">Motyw: %s</string>
@@ -232,7 +226,6 @@ Substratum. \n\nMusisz mieć włączone w Opcjach programistycznych \"Instaluj p
     <string name="delete_dialog_text" formatted="false">Czy na pewno chcesz usunąć \"%s\"?</string>
     <string name="restore">Karta Przywracania</string>
     <string name="restore_card_content">Kiedy profil jest ładowany, twoje aktualne ustawienia są czyszczone, a \"przywróć motyw\" zadziała na uaktualnionych zmianach.      </string>
-    <string name="remove_dialog_later">Później</string>
     <string name="restore_dialog_okay">Kontynuuj</string>
     <string name="restore_dialog_title">Aby całkowicie przywrócić Twój profil, te nakładki będą zainstalowane:
       </string>
@@ -271,7 +264,6 @@ Substratum. \n\nMusisz mieć włączone w Opcjach programistycznych \"Instaluj p
     <string name="toast_compiled_updated_with_errors">Wybrane nakładki zaktualizowane z pewnymi błędami!</string>
     <string name="toast_disabled3">Najpierw skompiluj tę nakładkę przed zastosowaniem!</string>
     <string name="toast_disabled5">Przed wykonaniem tej akcji zaznacz ważną nakładkę.</string>
-    <string name="toast_disabled6">Wybrane nakładki zostały usunięte!</string>
     <string name="no_themes_title">nie znaleziono motywów&#8230;</string>
     <string name="no_overlays_title">nie znaleziono nakładek&#8230;</string>
     <string name="no_themes_description">proszę zainstalować zgodny motyw!</string>
@@ -344,7 +336,6 @@ Substratum. \n\nMusisz mieć włączone w Opcjach programistycznych \"Instaluj p
     <string name="fab_menu_enable">Włącz zaznaczone</string>
     <string name="fab_menu_enable_disable">Zmień stan nakładki</string>
     <string name="fab_menu_swap_toggle">Wyłącz inne motywy</string>
-    <string name="fab_menu_swap_toggle_legacy">Usuń wszystkie istniejące</string>
     <string name="team_title_one">Liderzy Substratum</string>
     <string name="team_text_one">Nie tylko stworzyliśmy coś, co służy naszym użytkownikom, ale współpracowaliśmy z twórcami motywów aby stworzyć ten wspaniały silnik motywów dla społeczności!</string>
     <string name="team_title_two">Tłumacze Substratum</string>

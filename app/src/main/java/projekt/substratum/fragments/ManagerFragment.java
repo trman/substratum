@@ -52,14 +52,12 @@ import projekt.substratum.adapters.fragments.manager.ManagerItem;
 import projekt.substratum.common.Packages;
 import projekt.substratum.common.References;
 import projekt.substratum.common.Systems;
-import projekt.substratum.common.commands.ElevatedCommands;
 import projekt.substratum.common.commands.FileOperations;
 import projekt.substratum.common.platform.ThemeManager;
 import projekt.substratum.databinding.ManagerFragmentBinding;
 import projekt.substratum.util.helpers.StringUtils;
 import projekt.substratum.util.views.FloatingActionMenu;
 
-import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -76,11 +74,8 @@ import static projekt.substratum.common.Packages.getOverlayTarget;
 import static projekt.substratum.common.Packages.getPackageName;
 import static projekt.substratum.common.Packages.isPackageInstalled;
 import static projekt.substratum.common.References.DATA_RESOURCE_DIR;
-import static projekt.substratum.common.References.LEGACY_NEXUS_DIR;
 import static projekt.substratum.common.References.MANAGER_REFRESH;
-import static projekt.substratum.common.References.PIXEL_NEXUS_DIR;
 import static projekt.substratum.common.References.REFRESH_WINDOW_DELAY;
-import static projekt.substratum.common.References.VENDOR_DIR;
 import static projekt.substratum.common.References.getPieDir;
 import static projekt.substratum.common.Systems.checkOMS;
 import static projekt.substratum.common.Systems.isAndromedaDevice;
@@ -581,7 +576,7 @@ public class ManagerFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             ManagerFragment fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) {
+            if (fragment.isAdded()) {
                 currentPosition = ((LinearLayoutManager) fragment.recyclerView
                         .getLayoutManager())
                         .findFirstCompletelyVisibleItemPosition();
@@ -599,7 +594,7 @@ public class ManagerFragment extends Fragment {
         @Override
         protected Void doInBackground(Void... params) {
             ManagerFragment fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) {
+            if (fragment.isAdded()) {
                 try {
                     Context context = fragment.context;
                     fragment.overlaysList = new ArrayList<>();
@@ -731,7 +726,7 @@ public class ManagerFragment extends Fragment {
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
             ManagerFragment fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) {
+            if (fragment.isAdded()) {
                 Context context = fragment.context;
                 fragment.swipeRefreshLayout.setRefreshing(false);
                 fragment.toggleAll.setEnabled(true);
@@ -808,7 +803,7 @@ public class ManagerFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             ManagerFragment fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) {
+            if (fragment.isAdded()) {
                 materialSheetFab.hideSheet();
                 fragment.loadingBar.setVisibility(View.VISIBLE);
             }
@@ -817,7 +812,7 @@ public class ManagerFragment extends Fragment {
         @Override
         protected void onPostExecute(String result) {
             ManagerFragment fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) {
+            if (fragment.isAdded()) {
                 Context context = fragment.context;
                 if ("unauthorized".equals(result)) {
                     Toast.makeText(context,
@@ -837,7 +832,7 @@ public class ManagerFragment extends Fragment {
         @Override
         protected String doInBackground(String... params) {
             ManagerFragment fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) {
+            if (fragment.isAdded()) {
                 Context context = fragment.context;
                 fragment.overlayList = fragment.mAdapter.getOverlayManagerList();
                 boolean has_failed = false;
@@ -905,7 +900,7 @@ public class ManagerFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             ManagerFragment fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) {
+            if (fragment.isAdded()) {
                 materialSheetFab.hideSheet();
                 fragment.loadingBar.setVisibility(View.VISIBLE);
             }
@@ -914,7 +909,7 @@ public class ManagerFragment extends Fragment {
         @Override
         protected String doInBackground(Void... voids) {
             ManagerFragment fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) {
+            if (fragment.isAdded()) {
                 Context context = fragment.context;
 
                 if (Systems.checkOMS(context) && !Systems.isSamsungDevice(context)) {
@@ -979,47 +974,11 @@ public class ManagerFragment extends Fragment {
                             } else {
                                 FileOperations.mountRW();
                                 FileOperations.mountRWData();
-                                FileOperations.mountRWVendor();
                                 FileOperations.bruteforceDelete(DATA_RESOURCE_DIR +
                                         "overlays.list");
 
-                                FileOperations.bruteforceDelete(LEGACY_NEXUS_DIR +
-                                        fragment.overlaysList.get(i).getName() + ".apk");
-                                FileOperations.bruteforceDelete(PIXEL_NEXUS_DIR +
-                                        fragment.overlaysList.get(i).getName() + ".apk");
-                                FileOperations.bruteforceDelete(VENDOR_DIR +
-                                        fragment.overlaysList.get(i).getName() + ".apk");
                                 FileOperations.bruteforceDelete(getPieDir() +
                                         "_" + fragment.overlaysList.get(i).getName() + ".apk");
-                                String legacyResourceIdmap =
-                                        (LEGACY_NEXUS_DIR.substring(1) +
-                                                fragment.overlaysList.get(i).getName())
-                                                .replace("/", "@") + ".apk@idmap";
-                                String pixelResourceIdmap =
-                                        (PIXEL_NEXUS_DIR.substring(1) +
-                                                fragment.overlaysList.get(i).getName())
-                                                .replace("/", "@") + ".apk@idmap";
-                                String vendorResourceIdmap =
-                                        (VENDOR_DIR.substring(1) +
-                                                fragment.overlaysList.get(i).getName())
-                                                .replace("/", "@") + ".apk@idmap";
-                                Substratum.log(getClass().getSimpleName(),
-                                        "Removing idmap resource pointer '" +
-                                                legacyResourceIdmap + '\'');
-
-                                FileOperations.bruteforceDelete(DATA_RESOURCE_DIR +
-                                        legacyResourceIdmap);
-                                Substratum.log(getClass().getSimpleName(),
-                                        "Removing idmap resource pointer '" +
-                                                pixelResourceIdmap + '\'');
-                                FileOperations.bruteforceDelete(DATA_RESOURCE_DIR +
-                                        pixelResourceIdmap);
-                                Substratum.log(getClass().getSimpleName(),
-                                        "Removing idmap resource pointer '" +
-                                                vendorResourceIdmap + '\'');
-                                FileOperations.bruteforceDelete(DATA_RESOURCE_DIR +
-                                        vendorResourceIdmap);
-                                FileOperations.mountROVendor();
                                 FileOperations.mountROData();
                                 FileOperations.mountRO();
                             }
@@ -1044,15 +1003,6 @@ public class ManagerFragment extends Fragment {
                                 fragment.activatedOverlays.add(packageInfo.packageName);
                             }
                         }
-                    } else {
-                        File currentDir = new File(LEGACY_NEXUS_DIR);
-                        String[] listed = currentDir.list();
-                        for (String file : listed) {
-                            if (".apk".equals(file.substring(file.length() - 4))) {
-                                fragment.activatedOverlays.add(file.substring(0,
-                                        file.length() - 4));
-                            }
-                        }
                     }
                 }
 
@@ -1071,42 +1021,13 @@ public class ManagerFragment extends Fragment {
         @Override
         protected void onPostExecute(String result) {
             ManagerFragment fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) {
+            if (fragment.isAdded()) {
                 Context context = fragment.context;
                 if (Systems.isAndromedaDevice(context)) {
                     new Handler().postDelayed(fragment::setSwipeRefreshLayoutRefreshing,
                             MANAGER_FRAGMENT_INITIAL_DELAY);
                 } else {
                     fragment.setSwipeRefreshLayoutRefreshing();
-                }
-
-                if (!Systems.checkOMS(context) && !Systems.isSamsungDevice(context)) {
-                    Toast.makeText(
-                            context,
-                            fragment.getString(R.string.toast_disabled6),
-                            Toast.LENGTH_SHORT
-                    ).show();
-
-                    if (fragment.getActivity() != null) {
-                        AlertDialog.Builder alertDialogBuilder =
-                                new AlertDialog.Builder(fragment.getActivity(),
-                                        R.style.Theme_AppCompat_Dialog_Alert);
-                        alertDialogBuilder
-                                .setTitle(fragment.getString(R.string
-                                        .legacy_dialog_soft_reboot_title));
-                        alertDialogBuilder
-                                .setMessage(
-                                        fragment.getString(R.string
-                                                .legacy_dialog_soft_reboot_text));
-                        alertDialogBuilder
-                                .setPositiveButton(android.R.string.ok,
-                                        (dialog, id) -> ElevatedCommands.reboot());
-                        alertDialogBuilder.setNegativeButton(
-                                R.string.remove_dialog_later, (dialog, id1) -> dialog.dismiss());
-                        alertDialogBuilder.setCancelable(false);
-                        AlertDialog alertDialog = alertDialogBuilder.create();
-                        alertDialog.show();
-                    }
                 }
             }
         }
@@ -1126,7 +1047,7 @@ public class ManagerFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             ManagerFragment fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) {
+            if (fragment.isAdded()) {
                 materialSheetFab.hideSheet();
                 fragment.loadingBar.setVisibility(View.VISIBLE);
             }
@@ -1135,7 +1056,7 @@ public class ManagerFragment extends Fragment {
         @Override
         protected void onPostExecute(String result) {
             ManagerFragment fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) {
+            if (fragment.isAdded()) {
                 Context context = fragment.context;
                 if ("unauthorized".equals(result)) {
                     Toast.makeText(context,
@@ -1154,7 +1075,7 @@ public class ManagerFragment extends Fragment {
         @Override
         protected String doInBackground(String... params) {
             ManagerFragment fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) {
+            if (fragment.isAdded()) {
                 Context context = fragment.context;
                 fragment.overlayList = fragment.mAdapter.getOverlayManagerList();
                 boolean hasFailed = false;
@@ -1225,7 +1146,7 @@ public class ManagerFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             ManagerFragment fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) {
+            if (fragment.isAdded()) {
                 MainActivity.queuedUninstall = new ArrayList<>();
                 materialSheetFab.hideSheet();
                 fragment.loadingBar.setVisibility(View.VISIBLE);
@@ -1235,7 +1156,7 @@ public class ManagerFragment extends Fragment {
         @Override
         protected Void doInBackground(Void... params) {
             ManagerFragment fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) {
+            if (fragment.isAdded()) {
                 Context context = fragment.context;
 
                 fragment.overlayList = fragment.mAdapter.getOverlayManagerList();
@@ -1294,7 +1215,7 @@ public class ManagerFragment extends Fragment {
         @Override
         protected void onPostExecute(Void result) {
             ManagerFragment fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) {
+            if (fragment.isAdded()) {
                 if (Systems.isAndromedaDevice(fragment.context)) {
                     new Handler().postDelayed(fragment::setSwipeRefreshLayoutRefreshing,
                             MANAGER_FRAGMENT_INITIAL_DELAY);
@@ -1322,7 +1243,7 @@ public class ManagerFragment extends Fragment {
         @Override
         public void onReceive(Context context, Intent intent) {
             ManagerFragment fragment = ref.get();
-            if (fragment.isAdded() && fragment != null) {
+            if (fragment.isAdded()) {
                 if (layoutReloader != null && !layoutReloader.isCancelled()) {
                     layoutReloader.cancel(true);
                     layoutReloader = new LayoutReloader(fragment, MainActivity.userInput);

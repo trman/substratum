@@ -25,8 +25,6 @@
     <string name="refused_to_install_notification_button">Thema verwijderen</string>
     <string name="refused_to_install_title_notification">Themer weigert thema installatie op Samsung.</string>
     <string name="refused_to_install_text_notification">Installatie van %s mislukt.</string>
-    <string name="failed_to_install_title_notification">Installatie van OMS thema mislukt</string>
-    <string name="failed_to_install_text_notification">Installatie van %s mislukt.</string>
     <string name="actionbar_theme_count_loading">laden&#8230;</string>
     <string name="actionbar_search">Zoeken</string>
     <string name="actionbar_changelog">Thema wijzigingen</string>
@@ -36,17 +34,13 @@
     <string name="systemui_qs_tiles">Systeem-UI QS tegelpictogrammen</string>
     <string name="systemui_statusbar">Systeem-UI statusbalk pictogrammen</string>
     <string name="warning_title">WAARSCHUWING!</string>
-    <string name="legacy_warning_content">Legacy wordt verstrekt als-is, omdat wij geen volledige compatibiliteit met kleuren kunnen garanderen. Verzeker dat je een aangepaste recovery voor je apparaat hebt en begrijpt hoe je een bootloop herstelt alvorens het verder gaan.\n\nWij kunnen niets herstellen dat geen thema krijgt op legacy, omdat dit systeemwijzigingen vereist.</string>
     <string name="samsung_warning_content">Samsung ondersteuning wordt geleverd als-is, omdat wij geen volledige compatibiliteit met kleuren en AOSP-gebaseerde overlays kunnen garanderen. Wij hebben ervoor gezorgd dat schadelijke overlays worden verborgen voor je apparaat. Je kunt dit op eigen risico in-/uitschakelen in de instellingen.\n\nAls je te maken krijgt met een zwart scherm, raadpleeg ons XDA thread voor de twee herstelmethodes.</string>
     <string name="xiaomi_warning_content"> Xiaomi heeft extra stappen toegevoegd om de werking van Substratum als-is te stoppen.\n\nHierom moet je \"Via USB installeren\" en \"USB debuggen (Veiligheidsinstellingen)\" inschakelen in de Ontwikkelaarsopties, naast de gebruikelijke \"USB debuggen\".\n\nZonder deze machtigingen kunnen overlays niet installeren!</string>
     <string name="new_stock_commits_title">Herstart vereist!</string>
     <string name="new_stock_commits_text">Na de beveiligingspatch van maart heeft Google een controle op overlays waarvoor het apparaat moet herstarten (om te activeren) geïmplementeerd!</string>
     <string name="new_stock_commits_text_samsung">SAMSUNG GEBRUIKER! We hebben een paar dingen toegevoegd aan nieuw gecompileerde overlays die Samsung gebruikt om hun overlays te identificeren! Dit betekent dat je mogelijk moet wachten tot de overlays zijn geïnstalleerd voor het herstarten van je apparaat, omdat Samsung vertragingen en blokkades heeft toegevoegd voor overlay-detectie bij installaties! Alle Systeem-UI overlays moeten worden ingeschakeld alvorens het herstarten, anders zal je moeten herstarten en het gehele proces opnieuw uitvoeren!</string>
     <string name="new_stock_commits_text_pink">Als zodanig, zal dit overlay in het roze zijn, en zal in-/uitschakelen worden uitgeschakeld tot na een herstart.</string>
-    <string name="legacy_dialog_soft_reboot_title">Herstart vereist!</string>
-    <string name="legacy_dialog_soft_reboot_text">Wanneer je apparaat draait op het Resource Runtime Overlay systeem, is een herstart vereist na het toevoegen of verwijderen van overlays.\n\nAls je dit dialoog voortzet zal je apparaat automatisch herstarten, dus verzeker dat je al je werk hebt opgeslagen alvorens het doorgaan.</string>
     <string name="activity_missing_toast">Er waren geen apps gevonden die dit verzoek kunnen verwerken, sorry!</string>
-    <string name="abort_overlay_toast_success">Alle overlays gedeïnstalleerd!</string>
     <string name="rescue_toast">Je systeem redden&#8230;</string>
     <string name="reboot_awaiting_manager_title">OVERLAY LEESFOUT</string>
     <string name="manager_theme_name">Thema: %s</string>
@@ -227,7 +221,6 @@
     <string name="delete_dialog_text" formatted="false">Weet je zeker dat je \"%s\" wilt verwijderen?</string>
     <string name="restore">Herstelkaart</string>
     <string name="restore_card_content">Wanneer een profiel is geladen, wordt je huidige opstelling compleet gewist en zal \"thema herstellen\" de bijgewerkte wijzigingen opnemen.</string>
-    <string name="remove_dialog_later">Later</string>
     <string name="restore_dialog_okay">Doorgaan</string>
     <string name="restore_dialog_title">Deze overlays worden geïnstalleerd om je profiel volledig te herstellen:</string>
     <string name="backup_button">BACK-UP HUIDIGE TOESTAND</string>
@@ -263,7 +256,6 @@
     <string name="toast_compiled_updated_with_errors">Geselecteerde overlay(s) bijgewerkt met fouten!</string>
     <string name="toast_disabled3">Compileer deze overlay alvorens het toepassen!</string>
     <string name="toast_disabled5">Kies een geldige overlay vóór het uitvoeren van deze actie.</string>
-    <string name="toast_disabled6">Geselecteerde overlay(s) verwijderd!</string>
     <string name="no_themes_title">geen thema\'s gevonden&#8230;</string>
     <string name="no_overlays_title">geen overlays gevonden&#8230;</string>
     <string name="no_themes_description">installeer een compatibel thema!</string>
@@ -336,7 +328,6 @@
     <string name="fab_menu_enable">Selectie inschakelen</string>
     <string name="fab_menu_enable_disable">Overlay staten wijzigen</string>
     <string name="fab_menu_swap_toggle">Andere thema\'s uitschakelen</string>
-    <string name="fab_menu_swap_toggle_legacy">Verwijder alle bestaande</string>
     <string name="team_title_one">Leiders van Substratum</string>
     <string name="team_text_one">Wij hebben niet alleen iets gemaakt dat werkt voor de gebruikers, maar we hebben in samenwerking met themers een geweldige thematisering dienst gemaakt voor de communiteit!</string>
     <string name="team_title_two">Substratum vertalers</string>
